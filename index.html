@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#08111e" />
+  <meta name="description" content="Chevrolet Cobalt 3D — қазақша интерактивті автомобиль энциклопедиясы. Қозғалтқыш, кузов, салон, тежегіш және басқа бөлшектерін зерттеңіз." />
+  <title>COBALT 3D LAB | Автомобильдің интерактивті анатомиясы</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="stylesheet" href="./src/styles.css" />
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}
+  </script>
+</head>
+<body>
+<div class="noise"></div>
+<div class="app">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Cobalt 3D Lab — басы">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 58 32" width="42" height="30"><path d="M4 11h15V5h20v6h15v10H39v6H19v-6H4Z" fill="#dcb363" stroke="#ffe1a4" stroke-width="2" /></svg></span>
+      <span class="brand-letters"><b>COBALT<span>3D</span></b><small>INTERACTIVE AUTO LAB</small></span>
+    </a>
+    <div class="top-center"><span class="status-pulse"></span> ИНТЕРАКТИВТІ ТЕХНИКАЛЫҚ АТЛАС <span class="beta">2026 EDITION</span></div>
+    <div class="top-actions">
+      <button id="shortcutBtn" class="top-btn" title="Пернетақта жарлықтары">⌨ <span>Жарлықтар</span></button>
+      <a class="top-btn github-btn" href="https://github.com/new" target="_blank" rel="noopener noreferrer" title="GitHub репозиторий ашу"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.76-.24.76-.53v-2.17c-3.09.67-3.74-1.31-3.74-1.31-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.67.08-.67 1.12.08 1.71 1.16 1.71 1.16 1 .17 1.65-.35 2.05-.65.1-.72.4-1.21.72-1.49-2.47-.28-5.07-1.24-5.07-5.51 0-1.22.44-2.22 1.16-3.01-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.09 1.15A10.7 10.7 0 0 1 12 5.04c.95 0 1.9.13 2.79.38 2.15-1.45 3.08-1.15 3.08-1.15.61 1.54.23 2.68.12 2.96.72.79 1.15 1.79 1.15 3.01 0 4.28-2.6 5.23-5.08 5.5.41.36.77 1.06.77 2.14v3.23c0 .3.2.64.77.53A11.2 11.2 0 0 0 12 .8Z"/></svg><span>GitHub</span></a>
+    </div>
+  </header>
+  <main class="workspace">
+    <aside class="sidebar panel" aria-label="Автомобиль жүйелері">
+      <div class="sidebar-intro"><div class="eyebrow">КӨЛІК АНАТОМИЯСЫ <span class="microdot"></span> 01 / 09</div><h2>Бөлшектер<br><em>каталогы</em></h2><p>Бөлшекті таңдаңыз — 3D үлгіде орны көрсетіледі.</p></div>
+      <div class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Бөлшек іздеу..." autocomplete="off" aria-label="Бөлшектерді іздеу"/><kbd>/</kbd></div>
+      <div id="categoryList" class="category-list" role="group" aria-label="Бөлшек санаттары"></div>
+      <div class="list-heading"><span id="partsTitle">БАРЛЫҚ БӨЛШЕК</span><span id="partsCount">0</span></div>
+      <div id="partsList" class="parts-list" tabindex="0"></div>
+      <div class="sidebar-foot"><span class="green-light"></span><span>МОДЕЛЬ ЖҮКТЕЛДІ</span><span id="fpsLabel">— FPS</span></div>
+    </aside>
+    <section class="stage" aria-label="Интерактивті үшөлшемді машина">
+      <div id="canvas3d" class="canvas3d"></div>
+      <div class="stage-grid"></div>
+      <div class="stage-head">
+        <div><div class="eyebrow"><span class="microdot"></span> EXPLORE IN 3D / MODEL 001</div><h1>CHEVROLET <strong>COBALT</strong></h1><p>Бір автокөлік. Ондаған бөлшек. Шексіз зерттеу.</p></div>
+        <div class="variant-tag"><span>●</span> 1.5L · INLINE-4 <small>6AT VISUAL MODEL</small></div>
+      </div>
+      <div class="side-scale" aria-hidden="true"><span>FRONT</span><span class="ruler"></span><span>REAR</span></div>
+      <div id="hotspotLayer" class="hotspot-layer" aria-label="3D бөлшек белгілері"></div>
+      <div class="viewfinder top-left"></div><div class="viewfinder top-right"></div><div class="viewfinder bottom-left"></div><div class="viewfinder bottom-right"></div>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      <div class="stage-hint"><span class="hand">⤧</span> Тышқанмен айналдырыңыз <i></i> Дөңгелекпен жақындатыңыз <i></i> Бөлшекті басыңыз</div>
+      <div class="view-switches" role="group" aria-label="Көрініс бұрыштары">
+        <button data-view="iso" class="view-btn active">3D</button><button data-view="front" class="view-btn">АЛДЫ</button><button data-view="side" class="view-btn">ҚЫРЫ</button><button data-view="top" class="view-btn">ҮСТІ</button><button data-view="inside" class="view-btn">САЛОН</button>
+      </div>
+      <div class="control-dock" role="group" aria-label="3D интерактивті басқару">
+        <button id="hoodBtn" class="dock-btn" title="Капотты ашу/жабу (H)"><span>◩</span><small>КАПОТ</small></button>
+        <button id="doorBtn" class="dock-btn" title="Алдыңғы есіктерді ашу/жабу (D)"><span>◧</span><small>ЕСІК</small></button>
+        <button id="trunkBtn" class="dock-btn" title="Жүксалғышты ашу/жабу (T)"><span>▱</span><small>БАГАЖ</small></button>
+        <span class="dock-separator"></span>
+        <button id="xrayBtn" class="dock-btn" title="Кузовты мөлдір ету (X)"><span>◇</span><small>X-RAY</small></button>
+        <button id="explodeBtn" class="dock-btn" title="Жүйелерді бөлшектеу (E)"><span>⤢</span><small>EXPLODE</small></button>
+        <button id="motionBtn" class="dock-btn" title="Демонстрациялық қозғалыс"><span>⟳</span><small>ҚОЗҒАЛЫС</small></button>
+        <span class="dock-separator"></span>
+        <button id="resetBtn" class="dock-btn" title="Бастапқы көрініске қайту (R)"><span>↺</span><small>ҚАЛПЫНА</small></button>
+      </div>
+      <div class="color-picker" aria-label="Кузов түсі"><small>ТҮСІ</small><button class="paint-swatch selected" data-color="#e8f0ff" style="--color:#e8f0ff" title="Ақ күміс"></button><button class="paint-swatch" data-color="#2b343f" style="--color:#2b343f" title="Графит"></button><button class="paint-swatch" data-color="#136079" style="--color:#136079" title="Көк"></button><button class="paint-swatch" data-color="#af2e3e" style="--color:#af2e3e" title="Қызыл"></button></div>
+    </section>
+    <aside class="info-panel panel" aria-label="Таңдалған бөлшек ақпараты">
+      <div class="info-banner"><div class="eyebrow">TECHNICAL DATA <span class="live-badge">LIVE 3D</span></div><div class="info-overline">CHEVROLET COBALT</div><h2>Бөлшек<br><em>паспорты</em></h2><p>Үлгімен танысып, әр механизмнің атқаратын қызметін үйреніңіз.</p></div>
+      <div class="info-card" id="detailsPane">
+        <div class="detail-top"><span id="detailCat" class="detail-tag">ҚОЗҒАЛТҚЫШ</span><span id="detailIndex" class="detail-index">01 / 00</span></div>
+        <div class="detail-symbol" id="detailSymbol">⬡</div>
+        <h3 id="detailTitle">1.5 L DOHC қозғалтқыш</h3>
+        <div class="detail-eng" id="detailIdentifier">COMPONENT IDENTIFICATION</div>
+        <div class="detail-section"><h4>НЕ ҮШІН ҚАЖЕТ?</h4><p id="detailDescription"></p></div>
+        <div class="detail-section"><h4>АҚАУ БЕЛГІЛЕРІ</h4><p id="detailSigns"></p></div>
+        <div class="detail-section"><h4>ТЕКСЕРУ ЖӘНЕ КҮТІМ</h4><p id="detailCheck"></p></div>
+        <button id="focusBtn" class="focus-button"><span>⌖</span> 3D ҮЛГІДЕ ЖАҚЫНДАТУ <span>↗</span></button>
+      </div>
+      <div class="specs"><div class="specs-head"><span>ТЕХНИКАЛЫҚ СИПАТТАМАЛАР</span><span>↗</span></div><div id="specGrid" class="spec-grid"></div></div>
+      <div class="verified"><span>ⓘ</span><p>Оқу моделі. Жинақтама мен шығарылған жылға қарай бөлшектер өзгеше болуы мүмкін. Нақты жөндеу үшін зауыт нұсқаулығын қараңыз.</p></div>
+    </aside>
+  </main>
+  <footer class="footer"><span>© 2026 COBALT 3D LAB</span><span>BUILT WITH THREE.JS <span class="divider-text">/</span> 3D ENGINEERING EDUCATION</span><a href="https://chevrolet.uz/ru/normative-technical-documents" target="_blank" rel="noopener noreferrer">РЕСМИ НҰСҚАУЛЫҚ ↗</a></footer>
+</div>
+<div id="helpDialog" class="modal-wrap hidden" role="dialog" aria-modal="true" aria-label="Жарлықтар" tabindex="-1"><div class="modal"><button id="helpClose" class="modal-close" aria-label="Жабу">✕</button><div class="eyebrow">QUICK ACCESS</div><h2>Жылдам басқару</h2><div class="key-grid"><span>Капот</span><kbd>H</kbd><span>Есіктер</span><kbd>D</kbd><span>Жүксалғыш</span><kbd>T</kbd><span>Мөлдір кузов</span><kbd>X</kbd><span>Бөлшектеу</span><kbd>E</kbd><span>Қалпына келтіру</span><kbd>R</kbd><span>Іздеу</span><kbd>/</kbd><span>Диалогты жабу</span><kbd>Esc</kbd></div><p>3D көріністе тышқанның сол батырмасымен айналдырыңыз, дөңгелекпен масштабтаңыз, оң жақ батырмамен жылжытыңыз.</p></div></div>
+<div id="loading" class="loading"><div class="loading-core"><div class="loading-ring"></div><div class="loading-logo">COBALT<span>3D</span></div><div class="loading-caption">АВТОМОБИЛЬ ЖҮЙЕЛЕРІ ЖҮКТЕЛУДЕ</div><div class="progress-track"><div class="progress-fill"></div></div></div></div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
