@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#08111e" />
+  <meta name="description" content="Chevrolet Cobalt 3D — қазақша интерактивті автомобиль энциклопедиясы. Қозғалтқыш, кузов, салон, тежегіш және басқа бөлшектерін зерттеңіз." />
+  <title>COBALT 3D LAB | Автомобильдің интерактивті анатомиясы</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23081220'/%3E%3Ctext x='50%' y='68%' fill='%23f3ba70' text-anchor='middle' font-size='35'%3EC%3C/text%3E%3C/svg%3E" />
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+:root{--bg:#07111e;--panel:#0b1725;--panel2:#101e2b;--border:rgba(144,190,216,.12);--txt:#edf4fa;--muted:#8097ab;--aqua:#63e0fc;--gold:#f3ba70;--green:#75edb7;--easing:cubic-bezier(.2,.8,.2,1);font-synthesis:none}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#07111e;color:var(--txt);font-family:Manrope,Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}.noise{position:fixed;inset:0;z-index:7;pointer-events:none;opacity:.09;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E")}.app{height:100dvh;min-height:650px;display:flex;flex-direction:column;overflow:hidden}.topbar{flex:0 0 72px;display:flex;justify-content:space-between;align-items:center;background:rgba(6,15,25,.95);border-bottom:1px solid var(--border);padding:0 25px;z-index:6;position:relative}.topbar:after{position:absolute;bottom:-1px;left:19px;width:120px;height:1px;content:"";background:linear-gradient(90deg,var(--aqua),transparent)}.brand{display:flex;align-items:center;gap:12px;min-width:225px}.brand-mark{width:46px;height:39px;display:grid;place-items:center;background:#1b2831;border:1px solid #3c3f3d;border-radius:8px;box-shadow:inset 0 0 20px #f1c57818}.brand-letters b{display:block;font-family:Rajdhani,sans-serif;font-size:25px;line-height:24px;letter-spacing:1.8px}.brand-letters b span{color:var(--gold)}.brand-letters small{font-family:Rajdhani,sans-serif;letter-spacing:2.2px;color:#768ba3;font-size:10px;font-weight:700}.top-center{color:#9aafc0;font-size:10px;font-weight:800;letter-spacing:2px;display:flex;align-items:center;gap:11px}.status-pulse,.green-light{display:inline-block;width:7px;height:7px;border-radius:100%;background:var(--green);box-shadow:0 0 11px var(--green);flex:none;animation:pulse 2.5s infinite}.beta{border:1px solid #29405a;border-radius:4px;padding:5px 8px;margin-left:9px;color:var(--gold);font:600 10px Rajdhani,sans-serif;letter-spacing:1px}.top-actions{display:flex;align-items:center;gap:9px}.top-btn{height:36px;display:inline-flex;align-items:center;gap:9px;padding:0 13px;border:1px solid #2a394b;color:#c6d7e4;background:#111f2e;border-radius:8px;font-size:11px;font-weight:800;white-space:nowrap}.top-btn:hover{border-color:var(--aqua);color:#fff}.github-btn{background:#193247;border-color:#31536a}.workspace{flex:1;min-height:0;display:grid;grid-template-columns:293px minmax(380px,1fr) 303px}.panel{background:var(--panel);overflow:hidden;z-index:3}.sidebar{border-right:1px solid var(--border);display:flex;flex-direction:column;min-height:0}.sidebar-intro{padding:23px 22px 13px}.eyebrow{font:700 10px Rajdhani,sans-serif;letter-spacing:2.5px;color:var(--aqua)}.microdot{display:inline-block;width:5px;height:5px;border-radius:100%;background:#60ddff;box-shadow:0 0 7px #71eeff;vertical-align:middle;margin:0 4px}.sidebar-intro h2,.info-banner h2{font:700 34px/1.01 Rajdhani,sans-serif;letter-spacing:.3px;margin:12px 0 8px}.sidebar-intro h2 em,.info-banner h2 em{font-style:normal;color:var(--gold)}.sidebar-intro p,.info-banner p{font-size:11px;color:#7e95a8;line-height:1.65;margin:0}.searchbox{margin:7px 18px 13px;background:#0f2230;border:1px solid #284153;min-height:43px;border-radius:8px;display:flex;align-items:center;gap:10px;padding:0 11px}.searchbox:focus-within{border-color:#5ac9e5;box-shadow:0 0 0 3px #5ac9e517}.searchbox>span{font-size:26px;color:#81afc7;line-height:1}.searchbox input{background:none;border:none;color:#f1f9ff;font-size:12px;outline:none;flex:1;min-width:0}.searchbox input::placeholder{color:#6a859a}.searchbox kbd{font-family:Rajdhani,sans-serif;color:#68889d;border:1px solid #365065;border-radius:4px;padding:0 6px;font-size:13px}.category-list{display:flex;flex-direction:column;padding:0 13px 10px;gap:3px;overflow-y:auto;min-height:0;flex:0 1 auto;max-height:350px}.category{border:1px solid transparent;border-radius:7px;color:#92a7b8;text-align:left;background:none;padding:9px 10px;display:flex;align-items:center;gap:10px;font-weight:800;font-size:11px;transition:.15s}.category:hover{background:#152c3e;color:#f8fdff}.category.active{color:#eafaff;background:linear-gradient(92deg,#17445a,#102435 96%);border-color:#2c6078;box-shadow:inset 2px 0 var(--aqua)}.category .cat-icon{font-size:16px;font-family:Rajdhani,sans-serif;width:21px;text-align:center}.category .count{margin-left:auto;font:700 13px Rajdhani,sans-serif;color:#648398}.category.active .count{color:#70e1fa}.list-heading{height:42px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:0 23px;color:#6b8aa2;letter-spacing:1.3px;font:700 11px Rajdhani,sans-serif}.list-heading span:last-child{background:#20374b;border-radius:3px;padding:2px 7px;color:#acd3df}.parts-list{min-height:110px;overflow:auto;flex:1;padding:8px 12px 14px;scrollbar-color:#33516a transparent;scrollbar-width:thin}.part-row{display:flex;align-items:center;width:100%;background:transparent;color:#b1c3d0;border:none;text-align:left;padding:10px 11px;min-height:44px;gap:10px;border-bottom:1px solid #1a2b39;border-radius:5px}.part-row:hover{background:#142839}.part-row.selected{background:#1b3444;color:#fff;box-shadow:inset 2px 0 var(--gold)}.part-row .part-dot{width:7px;height:7px;border-radius:50%;background:#36576b;flex:none}.part-row.selected .part-dot{background:var(--gold);box-shadow:0 0 10px var(--gold)}.part-row .part-name{font-weight:700;font-size:10.8px;line-height:1.48;flex:1}.part-row .part-arrow{font-family:Rajdhani,sans-serif;font-size:17px;color:#54798b}.part-row.selected .part-arrow{color:var(--gold)}.empty-list{padding:30px 14px;color:#9ab4c4;font-size:12px;text-align:center}.sidebar-foot{height:38px;flex:none;display:flex;align-items:center;gap:9px;padding:0 20px;border-top:1px solid var(--border);font:700 10px Rajdhani,sans-serif;letter-spacing:1.1px;color:#728ba0}.sidebar-foot #fpsLabel{margin-left:auto;color:#9ab5cb}.sidebar-foot .green-light{width:5px;height:5px}.stage{position:relative;overflow:hidden;background:radial-gradient(ellipse at 56% 47%,#1c3b50 0%,#0e2436 38%,#07121f 80%)}.canvas3d{position:absolute;inset:0;z-index:1}.canvas3d canvas{width:100%;height:100%;display:block;outline:none}.stage-grid{position:absolute;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(#6dd3ec08 1px,transparent 1px),linear-gradient(90deg,#6dd3ec08 1px,transparent 1px);background-size:45px 45px;mask-image:linear-gradient(transparent,#000 29%,#000 84%,transparent)}.stage:before{content:"";z-index:1;position:absolute;top:0;right:0;left:0;height:180px;background:linear-gradient(#07131fd9,transparent);pointer-events:none}.stage:after{content:"";z-index:1;position:absolute;bottom:0;right:0;left:0;height:184px;background:linear-gradient(transparent,#07121fe8);pointer-events:none}.stage-head{position:absolute;z-index:2;top:24px;left:29px;right:25px;display:flex;justify-content:space-between;gap:14px;pointer-events:none}.stage-head h1{font:700 clamp(29px,3.2vw,53px)/1 Rajdhani,sans-serif;white-space:nowrap;letter-spacing:.1px;margin:12px 0 2px;color:#f2f8ff;text-shadow:0 5px 30px #0009}.stage-head h1 strong{color:var(--gold)}.stage-head p{font-size:11px;color:#99b2c3;margin:8px 0}.variant-tag{align-self:flex-start;text-align:right;border:1px solid #2e5669;background:#12283ab9;border-radius:7px;padding:11px 13px;font:700 12px Rajdhani,sans-serif;letter-spacing:1.3px;color:#cceaf5;white-space:nowrap}.variant-tag>span{font-size:10px;color:#61eed4;margin-right:6px}.variant-tag small{display:block;font-size:9px;margin-top:3px;color:#80a7bf}.side-scale{position:absolute;z-index:2;top:37%;left:22px;display:flex;align-items:center;gap:11px;writing-mode:vertical-rl;color:#467184;font:700 9px Rajdhani,sans-serif;letter-spacing:2px;pointer-events:none}.ruler{height:110px;border-left:1px dashed #5b8891}.viewfinder{position:absolute;z-index:2;width:20px;height:20px;opacity:.48;pointer-events:none}.top-left{top:14px;left:14px;border-top:1px solid #85d3e8;border-left:1px solid #85d3e8}.top-right{top:14px;right:14px;border-top:1px solid #85d3e8;border-right:1px solid #85d3e8}.bottom-left{bottom:14px;left:14px;border-bottom:1px solid #85d3e8;border-left:1px solid #85d3e8}.bottom-right{bottom:14px;right:14px;border-bottom:1px solid #85d3e8;border-right:1px solid #85d3e8}.hotspot-layer{position:absolute;inset:0;pointer-events:none;z-index:3}.hotspot{position:absolute;transform:translate(-50%,-50%);border:1px solid #69e7f4ba;background:#0b3045df;color:#d9fbff;border-radius:40px;padding:6px 10px 6px 7px;font:700 9px Rajdhani,sans-serif;letter-spacing:1px;white-space:nowrap;box-shadow:0 0 0 4px #55dfff16,0 4px 12px #0009;display:flex;align-items:center;gap:7px;pointer-events:auto;transition:background .15s,border-color .15s}.hotspot>i{width:7px;height:7px;border-radius:50%;background:#82efff;box-shadow:0 0 8px #5be7fe}.hotspot:hover,.hotspot.active{background:#13657b;border-color:#a1f3ff}.stage-hint{position:absolute;z-index:3;left:50%;transform:translateX(-50%);bottom:171px;display:flex;align-items:center;justify-content:center;white-space:nowrap;gap:9px;color:#8ab0c7;font-size:10px;pointer-events:none;text-shadow:0 1px 6px #001}.stage-hint .hand{font-size:19px;color:var(--aqua)}.stage-hint i{width:3px;height:3px;border-radius:50%;background:#567c8a}.view-switches{position:absolute;z-index:4;left:50%;transform:translateX(-50%);bottom:119px;border:1px solid #36566a;border-radius:9px;padding:4px;display:flex;gap:2px;background:#0b1e2ee9;backdrop-filter:blur(12px)}.view-btn{padding:8px 14px;border:none;border-radius:6px;font:800 10px Rajdhani,sans-serif;letter-spacing:1px;background:transparent;color:#91b6c7;transition:.15s}.view-btn:hover,.view-btn.active{background:#22536a;color:#f4fdff}.control-dock{position:absolute;z-index:4;bottom:22px;left:50%;transform:translateX(-50%);height:78px;display:flex;gap:2px;align-items:center;background:#0c2031ed;border:1px solid #406073;border-radius:13px;padding:7px 9px;box-shadow:0 14px 50px #000a,0 0 40px #3b9ac417;backdrop-filter:blur(18px)}.dock-btn{border:1px solid transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:none;color:#a4c0d1;width:65px;height:61px;border-radius:8px;transition:.2s}.dock-btn:hover{background:#1d3a4c;border-color:#3d6375;color:#fff}.dock-btn.active{background:#153c4d;border-color:#3fb8d2;color:#83edfb;box-shadow:inset 0 0 16px #15b3d416}.dock-btn>span{font:500 27px/1 Rajdhani,sans-serif}.dock-btn small{font:700 9px Rajdhani,sans-serif;letter-spacing:.85px}.dock-separator{width:1px;height:39px;background:#365267;margin:0 4px}.color-picker{position:absolute;z-index:4;right:23px;bottom:130px;display:flex;align-items:center;gap:7px;padding:8px 10px;border:1px solid #37576d;background:#0b1c2cc9;border-radius:8px}.color-picker small{font:700 9px Rajdhani,sans-serif;letter-spacing:1.1px;color:#a1bed1;margin-right:2px}.paint-swatch{width:19px;height:19px;box-shadow:inset 0 0 0 1px #fff3;background:var(--color);border:2px solid #2b4456;border-radius:50%;padding:0}.paint-swatch.selected{outline:1px solid #76e7fe;outline-offset:2px}.toast{position:absolute;z-index:6;top:135px;left:50%;transform:translateX(-50%) translateY(-15px);background:#123b4bf2;border:1px solid #3e9db6;box-shadow:0 8px 30px #0006;border-radius:8px;padding:11px 17px;font-size:11px;color:#e9fbff;opacity:0;pointer-events:none;transition:.2s;white-space:nowrap}.toast.visible{opacity:1;transform:translateX(-50%) translateY(0)}.info-panel{border-left:1px solid var(--border);overflow-y:auto;scrollbar-width:thin;scrollbar-color:#315067 transparent}.info-banner{position:relative;min-height:193px;padding:22px 22px 20px;background:radial-gradient(ellipse at 100% 3%,#1c4851 0,transparent 58%),linear-gradient(135deg,#101f2e,#142437)}.info-banner:after{content:"";position:absolute;inset:auto 20px 0;height:1px;background:linear-gradient(90deg,var(--aqua),transparent)}.info-banner h2{font-size:37px}.info-overline{font:700 10px Rajdhani,sans-serif;letter-spacing:3px;color:#5f819b;margin-top:12px}.live-badge{float:right;letter-spacing:1.4px;color:#a1e4bd;font-size:9px}.info-card{margin:17px 15px 0;padding:17px;border:1px solid #2e465a;border-radius:12px;background:linear-gradient(160deg,#15283a,#101b2b 80%);box-shadow:0 8px 25px #020b1660}.detail-top{display:flex;justify-content:space-between;align-items:center}.detail-tag{border:1px solid #75593d;background:#5a402c3b;padding:4px 8px;border-radius:4px;color:#eabb84;font:700 9px Rajdhani,sans-serif;letter-spacing:.8px}.detail-index{font:700 12px Rajdhani,sans-serif;color:#5a849b}.detail-symbol{height:52px;width:57px;display:grid;place-items:center;margin-top:11px;border-radius:9px;background:radial-gradient(circle,#21465c,#162b3b);border:1px solid #35647b;color:var(--aqua);font:700 35px Rajdhani,sans-serif}.info-card h3{font:700 25px/1.06 Rajdhani,sans-serif;color:#f2faff;margin:12px 0 6px}.detail-eng{color:#6f8da3;letter-spacing:1.7px;font:700 9px Rajdhani,sans-serif;margin-bottom:13px}.detail-section{border-top:1px solid #253b4a;padding:12px 0 11px}.detail-section h4{color:var(--gold);letter-spacing:1.2px;font:700 11px Rajdhani,sans-serif;margin:0 0 6px}.detail-section p{color:#aec5d4;font-size:11px;line-height:1.7;margin:0}.focus-button{border:1px solid #3797ae;border-radius:7px;background:linear-gradient(94deg,#21647a,#1b4156);color:#ebfaff;width:100%;min-height:41px;display:flex;justify-content:space-around;align-items:center;font:800 11px Rajdhani,sans-serif;letter-spacing:1.25px;gap:4px}.focus-button:hover{background:#25718a;border-color:#77dff3}.focus-button span{font-size:19px}.specs{padding:16px 18px}.specs-head{display:flex;justify-content:space-between;color:#9eb7c7;letter-spacing:1.3px;font:700 11px Rajdhani,sans-serif;margin-bottom:12px}.specs-head span:last-child{color:var(--aqua)}.spec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#263f50;border:1px solid #263f50}.spec-cell{padding:9px 11px;background:#10202f;min-width:0}.spec-cell span{font:700 10px Rajdhani,sans-serif;letter-spacing:.5px;color:#7994a6;display:block}.spec-cell b{font:700 17px Rajdhani,sans-serif;letter-spacing:.3px;color:#e5f4ff}.verified{border-top:1px solid var(--border);margin:2px 19px 18px;padding-top:12px;display:flex;gap:8px;color:#8ba3b5}.verified span{color:var(--aqua)}.verified p{font-size:10px;line-height:1.7;margin:0}.footer{flex:0 0 33px;background:#06111c;border-top:1px solid #152d3d;display:flex;align-items:center;justify-content:space-between;padding:0 23px;font:700 9px Rajdhani,sans-serif;letter-spacing:1.2px;color:#607f94;z-index:5}.footer a{color:#9dc9dc}.footer a:hover{color:var(--aqua)}.divider-text{color:#d9a95a;margin:0 9px}.modal-wrap{position:fixed;inset:0;z-index:100;background:#020a13bc;backdrop-filter:blur(8px);display:grid;place-items:center}.modal-wrap.hidden{display:none}.modal{position:relative;width:min(410px,calc(100vw - 36px));padding:29px;background:#0f2232;border:1px solid #4b758b;box-shadow:0 25px 90px #000b;border-radius:16px}.modal h2{font:700 35px Rajdhani,sans-serif;margin:8px 0 20px}.modal p{color:#9bb6c7;font-size:11px;line-height:1.7}.modal-close{position:absolute;right:15px;top:15px;border:1px solid #35556a;background:#183548;color:#fff;border-radius:6px;width:30px;height:30px}.key-grid{display:grid;grid-template-columns:1fr auto;gap:9px;align-items:center;font-size:12px;color:#b7d0de}.key-grid kbd{font:700 12px Rajdhani,sans-serif;color:var(--gold);border:1px solid #446072;border-radius:4px;padding:4px 12px;background:#091824}.loading{position:fixed;inset:0;background:#07111e;z-index:200;display:grid;place-items:center;transition:opacity .65s,visibility .65s}.loading.done{opacity:0;visibility:hidden;pointer-events:none}.loading-core{display:flex;flex-direction:column;align-items:center;position:relative}.loading-ring{width:94px;height:94px;border-radius:100%;border:1px solid #274d61;border-top:2px solid #80e7fa;animation:spin 2.1s linear infinite;position:absolute;top:-34px}.loading-logo{z-index:1;font:700 31px Rajdhani,sans-serif;letter-spacing:1.5px}.loading-logo span{color:var(--gold)}.loading-caption{margin-top:38px;font:700 11px Rajdhani,sans-serif;letter-spacing:2px;color:#80a9be}.progress-track{width:210px;margin-top:13px;background:#254053;height:2px;overflow:hidden}.progress-fill{width:25%;height:100%;background:#59dafa;animation:loading 1.6s ease infinite}@keyframes loading{0%{transform:translateX(-110%)}100%{transform:translateX(500%)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{50%{box-shadow:0 0 0 6px #75edb711}}@media(min-width:1600px){.workspace{grid-template-columns:310px minmax(500px,1fr) 320px}.sidebar-intro{padding-top:32px}.category{padding:11px 13px}.info-banner{min-height:205px}}@media(max-width:1190px){.workspace{grid-template-columns:245px minmax(300px,1fr) 265px}.top-center{display:none}.sidebar-intro{padding:17px 15px 8px}.sidebar-intro h2{font-size:29px}.category{padding:7px 9px}.info-banner{padding:19px 17px}.info-card{margin:11px 9px 0;padding:14px}.stage-head{left:17px;top:18px}.stage-head h1{font-size:33px}.variant-tag{display:none}.stage-hint{display:none}.dock-btn{width:49px}.dock-btn small{font-size:8px}.control-dock{height:74px;bottom:19px}.color-picker{right:12px;bottom:111px}}@media(max-width:830px){.app{height:auto;min-height:100dvh;overflow:visible}.topbar{height:65px;flex-basis:65px;padding:0 14px}.brand{min-width:0}.brand-letters b{font-size:23px}.top-actions .top-btn{padding:0 9px}.top-btn span{display:none}.workspace{display:flex;flex-direction:column}.stage{height:min(65vh,620px);min-height:430px;order:1}.sidebar{order:2;max-height:none;border-right:0;border-top:1px solid var(--border)}.info-panel{order:3;max-height:none;border-left:0;border-top:1px solid var(--border)}.sidebar-intro{display:none}.searchbox{margin-top:16px}.category-list{max-height:none;flex-flow:row wrap;overflow:visible;padding-bottom:15px}.category{width:auto;border:1px solid #294456}.category .count{margin-left:3px}.parts-list{max-height:255px;flex:none;display:grid;grid-template-columns:repeat(2,1fr)}.part-row{min-height:43px}.sidebar-foot{display:none}.info-banner{min-height:140px}.info-banner h2{font-size:30px}.info-card{margin:15px}.spec-grid{grid-template-columns:repeat(3,1fr)}.footer{flex-wrap:wrap;gap:10px;min-height:45px;flex-basis:auto;padding:10px 14px}.footer span:nth-child(2){display:none}}@media(max-width:520px){.stage{height:520px;min-height:520px}.stage-head{top:23px;left:16px}.stage-head h1{font-size:30px}.stage-head p{font-size:10px}.side-scale{display:none}.view-switches{bottom:119px}.view-btn{padding:8px 10px;font-size:9px}.control-dock{bottom:18px;left:7px;right:7px;transform:none;padding:5px 3px;height:75px;justify-content:space-evenly;gap:0}.dock-btn{min-width:0;flex:1;width:auto;gap:7px}.dock-btn>span{font-size:24px}.dock-btn small{font-size:7.5px}.dock-separator{margin:0 1px}.color-picker{top:118px;bottom:auto;right:10px;padding:5px 7px}.hotspot{font-size:8px;padding:5px 7px}.spec-grid{grid-template-columns:repeat(2,1fr)}.parts-list{grid-template-columns:1fr}.topbar .github-btn{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+</style>
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}
+  </script>
+</head>
+<body>
+<div class="noise"></div>
+<div class="app">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Cobalt 3D Lab — басы">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 58 32" width="42" height="30"><path d="M4 11h15V5h20v6h15v10H39v6H19v-6H4Z" fill="#dcb363" stroke="#ffe1a4" stroke-width="2" /></svg></span>
+      <span class="brand-letters"><b>COBALT<span>3D</span></b><small>INTERACTIVE AUTO LAB</small></span>
+    </a>
+    <div class="top-center"><span class="status-pulse"></span> ИНТЕРАКТИВТІ ТЕХНИКАЛЫҚ АТЛАС <span class="beta">2026 EDITION</span></div>
+    <div class="top-actions">
+      <button id="shortcutBtn" class="top-btn" title="Пернетақта жарлықтары">⌨ <span>Жарлықтар</span></button>
+      <a class="top-btn github-btn" href="https://github.com/new" target="_blank" rel="noopener noreferrer" title="GitHub репозиторий ашу"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.76-.24.76-.53v-2.17c-3.09.67-3.74-1.31-3.74-1.31-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.67.08-.67 1.12.08 1.71 1.16 1.71 1.16 1 .17 1.65-.35 2.05-.65.1-.72.4-1.21.72-1.49-2.47-.28-5.07-1.24-5.07-5.51 0-1.22.44-2.22 1.16-3.01-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.09 1.15A10.7 10.7 0 0 1 12 5.04c.95 0 1.9.13 2.79.38 2.15-1.45 3.08-1.15 3.08-1.15.61 1.54.23 2.68.12 2.96.72.79 1.15 1.79 1.15 3.01 0 4.28-2.6 5.23-5.08 5.5.41.36.77 1.06.77 2.14v3.23c0 .3.2.64.77.53A11.2 11.2 0 0 0 12 .8Z"/></svg><span>GitHub</span></a>
+    </div>
+  </header>
+  <main class="workspace">
+    <aside class="sidebar panel" aria-label="Автомобиль жүйелері">
+      <div class="sidebar-intro"><div class="eyebrow">КӨЛІК АНАТОМИЯСЫ <span class="microdot"></span> 01 / 09</div><h2>Бөлшектер<br><em>каталогы</em></h2><p>Бөлшекті таңдаңыз — 3D үлгіде орны көрсетіледі.</p></div>
+      <div class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Бөлшек іздеу..." autocomplete="off" aria-label="Бөлшектерді іздеу"/><kbd>/</kbd></div>
+      <div id="categoryList" class="category-list" role="group" aria-label="Бөлшек санаттары"></div>
+      <div class="list-heading"><span id="partsTitle">БАРЛЫҚ БӨЛШЕК</span><span id="partsCount">0</span></div>
+      <div id="partsList" class="parts-list" tabindex="0"></div>
+      <div class="sidebar-foot"><span class="green-light"></span><span>МОДЕЛЬ ЖҮКТЕЛДІ</span><span id="fpsLabel">— FPS</span></div>
+    </aside>
+    <section class="stage" aria-label="Интерактивті үшөлшемді машина">
+      <div id="canvas3d" class="canvas3d"></div>
+      <div class="stage-grid"></div>
+      <div class="stage-head">
+        <div><div class="eyebrow"><span class="microdot"></span> EXPLORE IN 3D / MODEL 001</div><h1>CHEVROLET <strong>COBALT</strong></h1><p>Бір автокөлік. Ондаған бөлшек. Шексіз зерттеу.</p></div>
+        <div class="variant-tag"><span>●</span> 1.5L · INLINE-4 <small>6AT VISUAL MODEL</small></div>
+      </div>
+      <div class="side-scale" aria-hidden="true"><span>FRONT</span><span class="ruler"></span><span>REAR</span></div>
+      <div id="hotspotLayer" class="hotspot-layer" aria-label="3D бөлшек белгілері"></div>
+      <div class="viewfinder top-left"></div><div class="viewfinder top-right"></div><div class="viewfinder bottom-left"></div><div class="viewfinder bottom-right"></div>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      <div class="stage-hint"><span class="hand">⤧</span> Тышқанмен айналдырыңыз <i></i> Дөңгелекпен жақындатыңыз <i></i> Бөлшекті басыңыз</div>
+      <div class="view-switches" role="group" aria-label="Көрініс бұрыштары">
+        <button data-view="iso" class="view-btn active">3D</button><button data-view="front" class="view-btn">АЛДЫ</button><button data-view="side" class="view-btn">ҚЫРЫ</button><button data-view="top" class="view-btn">ҮСТІ</button><button data-view="inside" class="view-btn">САЛОН</button>
+      </div>
+      <div class="control-dock" role="group" aria-label="3D интерактивті басқару">
+        <button id="hoodBtn" class="dock-btn" title="Капотты ашу/жабу (H)"><span>◩</span><small>КАПОТ</small></button>
+        <button id="doorBtn" class="dock-btn" title="Алдыңғы есіктерді ашу/жабу (D)"><span>◧</span><small>ЕСІК</small></button>
+        <button id="trunkBtn" class="dock-btn" title="Жүксалғышты ашу/жабу (T)"><span>▱</span><small>БАГАЖ</small></button>
+        <span class="dock-separator"></span>
+        <button id="xrayBtn" class="dock-btn" title="Кузовты мөлдір ету (X)"><span>◇</span><small>X-RAY</small></button>
+        <button id="explodeBtn" class="dock-btn" title="Жүйелерді бөлшектеу (E)"><span>⤢</span><small>EXPLODE</small></button>
+        <button id="motionBtn" class="dock-btn" title="Демонстрациялық қозғалыс"><span>⟳</span><small>ҚОЗҒАЛЫС</small></button>
+        <span class="dock-separator"></span>
+        <button id="resetBtn" class="dock-btn" title="Бастапқы көрініске қайту (R)"><span>↺</span><small>ҚАЛПЫНА</small></button>
+      </div>
+      <div class="color-picker" aria-label="Кузов түсі"><small>ТҮСІ</small><button class="paint-swatch selected" data-color="#e8f0ff" style="--color:#e8f0ff" title="Ақ күміс"></button><button class="paint-swatch" data-color="#2b343f" style="--color:#2b343f" title="Графит"></button><button class="paint-swatch" data-color="#136079" style="--color:#136079" title="Көк"></button><button class="paint-swatch" data-color="#af2e3e" style="--color:#af2e3e" title="Қызыл"></button></div>
+    </section>
+    <aside class="info-panel panel" aria-label="Таңдалған бөлшек ақпараты">
+      <div class="info-banner"><div class="eyebrow">TECHNICAL DATA <span class="live-badge">LIVE 3D</span></div><div class="info-overline">CHEVROLET COBALT</div><h2>Бөлшек<br><em>паспорты</em></h2><p>Үлгімен танысып, әр механизмнің атқаратын қызметін үйреніңіз.</p></div>
+      <div class="info-card" id="detailsPane">
+        <div class="detail-top"><span id="detailCat" class="detail-tag">ҚОЗҒАЛТҚЫШ</span><span id="detailIndex" class="detail-index">01 / 00</span></div>
+        <div class="detail-symbol" id="detailSymbol">⬡</div>
+        <h3 id="detailTitle">1.5 L DOHC қозғалтқыш</h3>
+        <div class="detail-eng" id="detailIdentifier">COMPONENT IDENTIFICATION</div>
+        <div class="detail-section"><h4>НЕ ҮШІН ҚАЖЕТ?</h4><p id="detailDescription"></p></div>
+        <div class="detail-section"><h4>АҚАУ БЕЛГІЛЕРІ</h4><p id="detailSigns"></p></div>
+        <div class="detail-section"><h4>ТЕКСЕРУ ЖӘНЕ КҮТІМ</h4><p id="detailCheck"></p></div>
+        <button id="focusBtn" class="focus-button"><span>⌖</span> 3D ҮЛГІДЕ ЖАҚЫНДАТУ <span>↗</span></button>
+      </div>
+      <div class="specs"><div class="specs-head"><span>ТЕХНИКАЛЫҚ СИПАТТАМАЛАР</span><span>↗</span></div><div id="specGrid" class="spec-grid"></div></div>
+      <div class="verified"><span>ⓘ</span><p>Оқу моделі. Жинақтама мен шығарылған жылға қарай бөлшектер өзгеше болуы мүмкін. Нақты жөндеу үшін зауыт нұсқаулығын қараңыз.</p></div>
+    </aside>
+  </main>
+  <footer class="footer"><span>© 2026 COBALT 3D LAB</span><span>BUILT WITH THREE.JS <span class="divider-text">/</span> 3D ENGINEERING EDUCATION</span><a href="https://chevrolet.uz/ru/normative-technical-documents" target="_blank" rel="noopener noreferrer">РЕСМИ НҰСҚАУЛЫҚ ↗</a></footer>
+</div>
+<div id="helpDialog" class="modal-wrap hidden" role="dialog" aria-modal="true" aria-label="Жарлықтар" tabindex="-1"><div class="modal"><button id="helpClose" class="modal-close" aria-label="Жабу">✕</button><div class="eyebrow">QUICK ACCESS</div><h2>Жылдам басқару</h2><div class="key-grid"><span>Капот</span><kbd>H</kbd><span>Есіктер</span><kbd>D</kbd><span>Жүксалғыш</span><kbd>T</kbd><span>Мөлдір кузов</span><kbd>X</kbd><span>Бөлшектеу</span><kbd>E</kbd><span>Қалпына келтіру</span><kbd>R</kbd><span>Іздеу</span><kbd>/</kbd><span>Диалогты жабу</span><kbd>Esc</kbd></div><p>3D көріністе тышқанның сол батырмасымен айналдырыңыз, дөңгелекпен масштабтаңыз, оң жақ батырмамен жылжытыңыз.</p></div></div>
+<div id="loading" class="loading"><div class="loading-core"><div class="loading-ring"></div><div class="loading-logo">COBALT<span>3D</span></div><div class="loading-caption">АВТОМОБИЛЬ ЖҮЙЕЛЕРІ ЖҮКТЕЛУДЕ</div><div class="progress-track"><div class="progress-fill"></div></div></div></div>
+<script>
+window.addEventListener("error", function(e) {
+ const ld = document.getElementById("loading");
+ if (ld && !ld.classList.contains("done") && (String(e.message).includes("module") || String(e.message).includes("Failed to fetch"))) {
+   ld.innerHTML = "<div class=\"loading-core\"><h2>3D кітапхана жүктелмеді</h2><p>Интернетті және CDN қолжетімділігін тексеріңіз.</p></div>";
+ }
+});
+window.setTimeout(function() {
+  const ld = document.getElementById('loading');
+  if (ld && !ld.classList.contains('done')) {
+    ld.innerHTML = '<div class="loading-core" style="text-align:center;max-width:430px;padding:25px"><h2>3D кітапханасы қосылмады</h2><p>Интернетті тексеріп, Ctrl+F5 басыңыз. CDN желісін бұғаттаған кеңейтім немесе шектеу болуы мүмкін.</p><button onclick="location.reload()" style="padding:12px 22px;background:#124f69;color:white;border:1px solid #77d8e9;border-radius:10px">ҚАЙТА ЖҮКТЕУ</button></div>';
+  }
+}, 18000);
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// COBALT 3D LAB — Kazakh language educational component catalogue.
+// Coordinates are positions of representative points on the instructional 3D model.
+const CATEGORIES = [
+  { id:'all', name:'Барлық бөлшек', icon:'◈', color:'#74dbff' },
+  { id:'body', name:'Кузов және оптика', icon:'▣', color:'#b4cdfd' },
+  { id:'engine', name:'Қозғалтқыш', icon:'⬡', color:'#ffb35c' },
+  { id:'cooling', name:'Салқындату және майлау', icon:'◉', color:'#4fdaef' },
+  { id:'transmission', name:'Трансмиссия', icon:'⌘', color:'#d6a5ff' },
+  { id:'brakes', name:'Тежегіштер', icon:'◎', color:'#ff7878' },
+  { id:'suspension', name:'Аспа және басқару', icon:'≋', color:'#95f4b4' },
+  { id:'electric', name:'Электр және қауіпсіздік', icon:'ϟ', color:'#ffe282' },
+  { id:'interior', name:'Салон', icon:'▤', color:'#c7d5e5' },
+  { id:'exhaust', name:'Отын және шығару', icon:'≋', color:'#ffad91' },
+];
+
+const p = (id,category,name,position,description,signs,check) => ({ id,category,name,position,description,signs,check });
+const PARTS = [
+  p('hood','body','Капот',[-1.78,1.31,0], 'Қозғалтқыш бөлігін сыртқы әсерден қорғайтын алдыңғы қақпақ. Ілмек және тіреу арқылы ашылады.', 'Ілмектің жабылмауы, саңылаудың біркелкі болмауы.', 'Ашу тұтқасын, құлыпты және тіреуді тексеріңіз.'),
+  p('grille','body','Радиатор торы',[-2.29,1.02,0], 'Алдыңғы тор ауа ағынын радиаторға бағыттайды және кузов дизайнының бір бөлігі.', 'Сынған ламельдер, ауа жолының бітелуі.', 'Жапырақ пен қоқыстан тазалап отырыңыз.'),
+  p('headlamp','body','Алдыңғы фара',[-2.22,1.09,.66], 'Жақын/алыс жарықты қалыптастыратын оптикалық блок; нақты шам түрі комплектацияға тәуелді.', 'Жарықтың әлсіреуі, булану, шамның жанбауы.', 'Линзаны және жарық бағытын тексеріңіз.'),
+  p('foglamp','body','Тұманға қарсы шам',[-2.245,.69,.68], 'Төмен орналасқан қосымша жарық көзі; кейбір комплектацияларда ғана болады.', 'Бір жақ шамның жанбауы.', 'Электр қосылымын және шамды тексеріңіз.'),
+  p('bumper','body','Алдыңғы бампер',[-2.24,.70,0], 'Сыртқы пластикалық қаптама және соққы сіңіргіш элементтерді жабады.', 'Жарық, бекіткіштің босап кетуі.', 'Бекіткіштері мен аралықтарын қараңыз.'),
+  p('frontdoor','body','Алдыңғы есік',[-.47,1.12,.90], 'Алдыңғы есік қаңқасы, терезе, құлып және тығыздағыштардан тұратын торап.', 'Шудың көбеюі, жабылу қиындығы.', 'Топса, резеңке және құлыпты тексеріңіз.'),
+  p('reardoor','body','Артқы есік',[.72,1.08,.90], 'Артқы жолаушы бөлігіне кіруді қамтамасыз ететін кузов элементі.', 'Топса сықыры, саңылау, құлып ақауы.', 'Тығыздағыш пен балалар құлпын тексеріңіз.'),
+  p('mirror','body','Бүйір айна',[-.91,1.40,1.02], 'Жүргізушіге артқы-бүйір аймақты көрсетеді. Жетек түрі жабдықталуға байланысты.', 'Айна реттелмеуі, әйнек жарылуы.', 'Көріну бұрышын реттеңіз.'),
+  p('windshield','body','Алдыңғы әйнек',[-.84,1.56,0], 'Ламинатталған қорғаныш әйнек, шанақтың қаттылығына да әсер етеді.', 'Жарықшақ, тазалағыш іздері.', 'Жарықшақты ерте жөндетіп, тазалағышты ауыстырыңыз.'),
+  p('wipers','body','Әйнектазалағыш',[-1.18,1.33,.35], 'Жаңбыр, кір, қар кезінде алдыңғы әйнектің көрінуін қалпына келтіреді.', 'Сықыр, із қалдыру, баяу қозғалу.', 'Щеткалар мен жуғыш сұйықтықты тексеріңіз.'),
+  p('trunk','body','Жүксалғыш қақпағы',[1.96,1.21,0], 'Артқы жүк бөлігін жабатын металл панель және құлып.', 'Су өтуі, ашылмауы.', 'Тығыздағыш пен құлып механизмін қараңыз.'),
+  p('taillight','body','Артқы шам',[2.16,1.03,.68], 'Тежеу, габарит және бұрылыс сигналдарын білдіретін артқы жарық блогы.', 'Сигналдың жанбауы, корпуста ылғал.', 'Шам мен электр тізбегін тексеріңіз.'),
+  p('bodyframe','body','Кузовтың күштік қаңқасы',[.22,1.48,0], 'Жүк көтеретін болат шанақ жолаушылар капсуласын ұстап, соққы энергиясын басқаруға қатысады.', 'Тот, қисайған саңылаулар, жөндеу іздері.', 'Күштік элементтердің геометриясын маманға тексертіңіз.'),
+  p('engine','engine','1.5 L DOHC қозғалтқыш',[-1.52,1.24,-.06], '1485 см³, қатар орналасқан 4 цилиндрлі атмосфералық бензин қозғалтқышының оқыту моделі.', 'Діріл, қуат төмендеуі, тұрақсыз бос жүріс.', 'Май, салқындатқыш, сүзгі және диагностика регламентін сақтаңыз.'),
+  p('block','engine','Цилиндрлер блогы',[-1.56,.98,-.09], 'Поршеньдер қозғалып, иінді білік орналастырылатын қозғалтқыштың негізгі құйма корпусы.', 'Май ағуы, қызып кету, қысымның төмендеуі.', 'Техникалық тексерісті маман атқаруы керек.'),
+  p('head','engine','Цилиндрлер басы',[-1.58,1.21,-.09], 'Клапандар, тарату біліктері және жану камерасының үстіңгі бөлігі орналасатын торап.', 'Антифриз жоғалуы, компрессияның төмендеуі.', 'Қызуды болдырмаңыз, сұйықтық деңгейін бақылаңыз.'),
+  p('valvecover','engine','Клапан қақпағы',[-1.56,1.35,-.09], 'Газ тарату механизмін жабады, май тұманын қозғалтқыш ішінде ұстайды.', 'Май дағы, күйген май иісі.', 'Тығыздағышты және желдету жүйесін тексеріңіз.'),
+  p('pistons','engine','Поршеньдер',[-1.63,1.00,-.09], 'Жану қысымын шатун арқылы иінді білікке береді; 4 цилиндрдің ішінде жұмыс істейді.', 'Компрессия азаюы, май шығыны.', 'Компрессия өлшеуді сервис орындайды.'),
+  p('crank','engine','Иінді білік',[-1.63,.83,-.09], 'Поршеньдердің ілгері-кейінді қозғалысын айналу қозғалысына түрлендіреді.', 'Тықыл, май қысымының төмендігі.', 'Май қысымы белгісін елемеуге болмайды.'),
+  p('spark','engine','Оталдыру шамдары',[-1.50,1.41,-.18], 'Жану камерасындағы ауа-отын қоспасына электр ұшқынын береді.', 'Діріл, нашар оталу, отын шығыны.', 'Сервис кестесі бойынша тексеріп ауыстырыңыз.'),
+  p('coil','engine','Оталдыру катушкасы',[-1.49,1.44,-.18], 'Төмен кернеуді оталдыру шамына қажет жоғары кернеуге түрлендіреді.', 'Қате тұтану, Check Engine.', 'Диагностикалық кодтарды оқытыңыз.'),
+  p('timing','engine','ГРМ механизмі',[-1.25,1.21,-.15], 'Клапандардың ашылуын поршень жүрісімен синхрондайтын газ тарату жүйесі.', 'Бөгде шу, қозғалтқыш жұмысының бұзылуы.', 'Нақты қозғалтқыштың регламенті бойынша қызмет көрсетіңіз.'),
+  p('throttle','engine','Дроссель түйіні',[-1.19,1.30,.22], 'Қозғалтқышқа түсетін ауа мөлшерін реттейтін торап.', 'Бос жүрістің құбылуы, баяу үдеу.', 'Дроссель мен ауа жолын сервис тексереді.'),
+  p('intake','engine','Қабылдау коллекторы',[-1.45,1.26,.33], 'Ауаны цилиндрлерге таратады; түтікшелер мен тығыздағыштардан тұрады.', 'Ауа сору, біркелкі емес жұмыс.', 'Ауа ағып кетуін тексертіңіз.'),
+  p('airfilter','engine','Ауа сүзгісі',[-1.90,1.14,.46], 'Кіретін ауадағы шаң-тозаңды ұстап, қозғалтқышты қорғайды.', 'Тарту нашарлауы, сүзгінің кірлеуі.', 'Шаңды жағдайда жиірек қарап ауыстырыңыз.'),
+  p('oilfilter','engine','Май сүзгісі',[-1.70,.86,.37], 'Мотор майындағы ұсақ қатты бөлшектерді ұстайды.', 'Май қысымының ауытқуы, ағып кету.', 'Маймен бірге регламент бойынша ауыстырыңыз.'),
+  p('radiator','cooling','Радиатор',[-2.00,1.00,0], 'Салқындатқыштан бөлінген жылуды ауаға шығаратын жылу алмастырғыш.', 'Қызу, сұйықтық ағуы.', 'Қанатшалардың бітелмеуін және деңгейді тексеріңіз.'),
+  p('fan','cooling','Радиатор желдеткіші',[-1.91,1.00,0], 'Автомобиль баяу жүргенде радиатордан ауа өткізуді күшейтеді.', 'Кептелісте қызып кету, шу.', 'Қозғалтқыш ыстықта желдеткіш кенет іске қосылуы мүмкін.'),
+  p('coolant','cooling','Кеңейту багы',[-1.87,1.23,-.57], 'Қызғанда ұлғаятын салқындатқышқа резерв көлем береді.', 'Деңгей азаюы, жарықшақ, қызып кету.', 'Ыстық қозғалтқышта қақпақты ашпаңыз.'),
+  p('pump','cooling','Су сорғысы',[-1.56,1.04,.41], 'Салқындатқыштың жүйе бойымен үздіксіз айналуын қамтамасыз етеді.', 'Сұйықтық ағуы, гуіл.', 'Техникалық қызмет кезінде герметикалығын тексертіңіз.'),
+  p('thermostat','cooling','Термостат',[-1.78,1.25,.32], 'Қозғалтқыш қызуына байланысты салқындатқыштың үлкен/кіші контурын реттейді.', 'Ұзақ қызу немесе қызып кету.', 'Температура көрсеткішін бақылаңыз.'),
+  p('oilsump','cooling','Май картері',[-1.61,.65,-.08], 'Мотор майы жиналатын қозғалтқыштың төменгі бөлігі.', 'Май тамшылауы, қорғаныштың зақымдануы.', 'Кедергіден кейін май ағып кетпегенін тексеріңіз.'),
+  p('battery','electric','12 В аккумулятор',[-1.80,1.19,-.50], 'Стартер мен борттық тұтынушыларға электр энергиясын береді.', 'Әлсіз оталу, жарықтың көмескіленуі.', 'Клемма тотығуын және батарея күйін қараңыз.'),
+  p('alternator','electric','Генератор',[-1.67,1.04,.45], 'Қозғалтқыш жұмыс істегенде батареяны зарядтап, электр жүйесін қоректендіреді.', 'Заряд шамы, кернеу түсуі.', 'Ремень мен заряд кернеуін тексертіңіз.'),
+  p('starter','electric','Стартер',[-1.09,.92,-.34], 'Қозғалтқыш іске қосылғанда иінді білікті бастапқы айналымға келтіреді.', 'Шыртыл, айналдырмау.', 'Аккумулятор, клемма және стартерді тексеріңіз.'),
+  p('fusebox','electric','Сақтандырғыш қорабы',[-1.20,1.23,-.56], 'Электр тізбектерін артық токтан қорғайтын сақтандырғыштар мен релелер блогы.', 'Бірнеше электр құрылғысының істемеуі.', 'Сәйкес номиналды сақтандырғышты ғана қолданыңыз.'),
+  p('ecu','electric','ЭБУ — қозғалтқыш компьютері',[-1.07,1.25,.44], 'Датчиктер сигналдарын өңдеп, отын бүркуі мен тұтануды басқарады.', 'Check Engine, жүйелік қате.', 'OBD-диагностика арқылы кодтарды тексертіңіз.'),
+  p('abs','electric','ABS басқару модулі',[-1.13,1.20,-.40], 'Дөңгелек бұғатталуының алдын алу үшін тежеу қысымын реттеуге қатысады.', 'ABS индикаторының жануы.', 'Дөңгелек датчиктері мен гидроблок диагностикасы қажет.'),
+  p('airbag','electric','Қауіпсіздік жастығы',[-.22,1.49,.47], 'Апат кезінде белдікпен бірге жарақат қаупін азайтуға арналған қорғаныш жүйесі.', 'Airbag индикаторы жануы.', 'Жастық пен сымдарын өз бетіңізше ашпаңыз.'),
+  p('gearbox','transmission','6AT автомат беріліс қорабы',[-.92,.92,.04], 'Қозғалтқыш моментін қажетті беріліс қатынасы арқылы алдыңғы жетекке жеткізеді; модельде AT нұсқасы көрсетілді.', 'Соққы, тайғақтау, ауысудың кешігуі.', 'Трансмиссия сұйықтығына тек зауыт регламенті бойынша қызмет көрсетіңіз.'),
+  p('converter','transmission','Гидротрансформатор',[-1.13,.93,.06], 'Автомат қораптағы сұйықтық арқылы моментті беретін құрылғы.', 'Діріл, үдеудегі сырғу.', 'Қорап диагностикасы маманға жүктеледі.'),
+  p('differential','transmission','Дифференциал',[-.80,.83,.03], 'Алдыңғы жетек доңғалақтарының әртүрлі жылдамдықпен айналуына мүмкіндік береді.', 'Бұрылғанда гуіл, діріл.', 'Тығыздағыштар мен мойынтіректерді тексертіңіз.'),
+  p('axle','transmission','Жартылай ось және ШРУС',[-1.38,.60,.55], 'Моментті дифференциалдан жетек доңғалақтарына бағыттайды.', 'Бұрылыста сыртылдау, пыльник жыртылуы.', 'ШРУС қаптамасының бүтіндігін тексеріңіз.'),
+  p('selector','transmission','Беріліс селекторы',[-.12,1.08,.05], 'P–R–N–D режимдерін механикалық/электрлік түрде таңдауға арналған басқару органы.', 'Режимнің қосылмауы, тұтқаның қатаюы.', 'Тежеу педалін басу мен селектор блоктауын тексеріңіз.'),
+  p('frontdisc','brakes','Алдыңғы дискілі тежегіш',[-1.38,.49,.88], 'Алдыңғы дөңгелектегі желдетілетін диск пен суппорт үйкеліс арқылы жылдамдықты азайтады.', 'Діріл, сықыр, тежелудің нашарлауы.', 'Колодка мен диск қалыңдығын маман тексерсін.'),
+  p('caliper','brakes','Тежегіш суппорты',[-1.34,.48,.91], 'Гидравликалық қысыммен тежегіш колодкаларын дискке қысады.', 'Бір жаққа тарту, қызу.', 'Суппорт бағыттаушысын тексертіңіз.'),
+  p('reardrum','brakes','Артқы барабан тежегіші',[1.39,.49,.89], 'Барабанның ішкі бетіне колодкалар жанасатын артқы тежегіш механизмі.', 'Қол тежегішінің әлсіреуі, шу.', 'Колодка мен реттеу механизмін тексертіңіз.'),
+  p('mastercyl','brakes','Бас тежегіш цилиндрі',[-1.09,1.24,-.32], 'Педаль күшін гидравликалық қысымға айналдырып, контурларға таратады.', 'Педаль жұмсаруы, сұйықтық ағуы.', 'Тежегіш сұйықтығының деңгейін бақылаңыз.'),
+  p('brakehose','brakes','Тежегіш түтіктері',[-.30,.64,.70], 'Тежегіш сұйықтығын басқару механизмінен жұмыс цилиндрлеріне жеткізеді.', 'Сұйықтық ағуы, педаль жүрісінің ұлғаюы.', 'Ағып кетсе көлікті жүргізбеңіз.'),
+  p('strut','suspension','Алдыңғы McPherson тірегі',[-1.37,.90,.72], 'Серіппе мен амортизатор біріктірілген алдыңғы аспа түйіні.', 'Тарсыл, бір жаққа қисайып тұру.', 'Амортизатордың ағуын және тіректерді тексертіңіз.'),
+  p('spring','suspension','Алдыңғы серіппе',[-1.39,.84,.73], 'Жолдан келетін соққыны серпімді түрде қабылдайды.', 'Кузовтың төмендеуі, металл дыбысы.', 'Серіппенің сынуын қарап шығыңыз.'),
+  p('arm','suspension','Төменгі аспа иіні',[-1.33,.45,.65], 'Доңғалақтың қозғалыс траекториясын анықтайтын шарнирлі иін.', 'Діріл, шинаның біркелкі тозбауы.', 'Сайлентблок пен шарлы тіректі тексертіңіз.'),
+  p('rearbeam','suspension','Артқы торсионды арқалық',[1.40,.58,0], 'Артқы екі доңғалақты жартылай тәуелді байланыстыратын серпімді арқалық.', 'Артқы бөліктегі тарсыл, тұрақсыздық.', 'Арқалық геометриясын және бекіткіштерін қаратыңыз.'),
+  p('steering','suspension','Гидрокүшейткіші бар руль рейкасы',[-1.04,.73,.20], 'Руль айналысын доңғалақ бұрылуына түрлендіреді, күшті гидрожүйе жеңілдетеді.', 'Руль ауырлауы, сұйықтық ағуы.', 'Гидросұйықтық пен рейканы тексертіңіз.'),
+  p('tie','suspension','Руль тартқышы',[-1.26,.57,.76], 'Руль рейкасындағы қозғалысты дөңгелек түйініне жеткізеді.', 'Бос жүріс, тарсыл.', 'Ұштықтарды тексеріп, қажет болса бұрыштарды реттеңіз.'),
+  p('wheel','suspension','R15 доңғалақ және шина',[-1.39,.47,1.0], 'Жолмен жанасуды қамтамасыз ететін шина мен диск. Үлгіде 195/65 R15 көрсетілген.', 'Теңселу, ауа қысымының түсуі.', 'Суық шинадағы қысым мен протекторды тексеріңіз.'),
+  p('dash','interior','Аспаптар панелі',[-.72,1.27,0], 'Жылдамдық, қозғалтқыш параметрлері және ескерту индикаторларын жүргізушіге көрсетеді.', 'Индикатор жануы, дисплей істемеуі.', 'Ескерту белгілерін пайдаланушы нұсқаулығымен салыстырыңыз.'),
+  p('steerwheel','interior','Руль дөңгелегі',[-.44,1.44,.43], 'Руль жүйесінің кіріс басқаруы; қауіпсіздік жастығы болуы мүмкін.', 'Бос жүріс, діріл.', 'Рульді басқару қауіпсіздігі бұзылса, сервиске жүгініңіз.'),
+  p('seats','interior','Алдыңғы орындықтар',[-.12,1.07,.43], 'Жүргізуші мен алдыңғы жолаушыға арналған, реттелетін отырғыштар.', 'Реттеу механизмінің кептелуі.', 'Рельс пен бекіткіштердің сенімділігін қараңыз.'),
+  p('rearseat','interior','Артқы орындық',[.95,1.08,0], 'Үш адамға есептелген артқы отырғыш пен бас тіректер.', 'Белдік құлпының істемеуі.', 'Белдіктер мен ISOFIX бекіткіштерін қараңыз.'),
+  p('belt','interior','Қауіпсіздік белдігі',[-.12,1.35,.66], 'Соқтығыс кезіндегі адам қозғалысын шектейді.', 'Қайта оралмауы, жіптің қажалуы.', 'Апаттан кейін қауіпсіздік элементтерін тексертіңіз.'),
+  p('screen','interior','Мультимедиа және климат басқаруы',[-.74,1.31,.03], 'Аудио, желдеткіш, ауа температурасы және жабдықталуына қарай қосымша функцияларды басқарады.', 'Экранның қосылмауы, ауа үрленбеуі.', 'Сақтандырғыштар мен желдеткіш жұмысын тексеріңіз.'),
+  p('fuel','exhaust','46 л отын багы',[1.27,.49,-.08], 'Бензинді қауіпсіз сақтау үшін жасалған арнайы ыдыс.', 'Отын иісі, деңгей датчигі ақауы.', 'Ағып кету күдігі болса көлікті іске қоспаңыз.'),
+  p('fuelpump','exhaust','Отын сорғысы',[1.20,.62,-.08], 'Отынды бактан қозғалтқышқа қажетті қысымда жеткізеді.', 'Нашар оталу, үдеу кезінде қуат жоғалуы.', 'Отын қысымын сервис өлшейді.'),
+  p('injector','exhaust','Отын форсункалары',[-1.44,1.23,.28], 'Отынды қабылдау трактіне мөлшерлеп бүркеді.', 'Тұрақсыз жүріс, жоғары шығын.', 'Инжектор жұмысын маман тексереді.'),
+  p('catalyst','exhaust','Катализатор',[-.73,.48,-.15], 'Шығарылған газ құрамындағы кейбір зиянды заттарды химиялық түрлендіреді.', 'Тарту әлсіреуі, Check Engine.', 'Қызған шығару жүйесін ұстамаңыз.'),
+  p('muffler','exhaust','Дыбыс бәсеңдеткіш',[1.77,.43,-.20], 'Шығарылған газ дыбысының амплитудасын азайтады.', 'Күшті гуіл, тесілу, тот.', 'Шығару жүйесінің герметикалығын тексертіңіз.'),
+  p('exhaustpipe','exhaust','Шығару құбыры',[.54,.41,-.18], 'Пайдаланылған газды мотордан автомобильдің артқы бөлігіне жеткізеді.', 'Газ иісі, металдың салдырлауы.', 'Салонға газ иісі кірсе дереу тоқтаңыз.'),
+];
+const PART_BY_ID = Object.fromEntries(PARTS.map(item => [item.id, item]));
+const CAT_BY_ID = Object.fromEntries(CATEGORIES.map(item => [item.id, item]));
+const SPECIFICATIONS = [
+  ['Қозғалтқыш', '1.5 L'], ['Көлем', '1485 см³'], ['Жетек', 'Алдыңғы'],
+  ['Трансмиссия', '6AT үлгісі'], ['Ұзындығы', '4479 мм'], ['Ені', '1735 мм'],
+  ['Биіктігі', '1514 мм'], ['База', '2620 мм'], ['Клиренс', '155 мм'],
+  ['Жүксалғыш', '563 л'], ['Отын багы', '46 л'], ['Орын', '5'],
+];
+const FACTS = [
+  'Алдыңғы аспа — McPherson, артқысы — жартылай тәуелді арқалық.',
+  'Алдыңғы тежегіштер — дискілі, артқысы — барабанды.',
+  'Беріліс қорабы нұсқасына қарай 5MT немесе 6AT болуы мүмкін.',
+  'Cobalt-тың 1.5 л қозғалтқышы қатарлы төрт цилиндрлі.',
+  'Көрсетілген 3D үлгі — оқу үшін қолдан жасалған модель, зауыттық CAD емес.',
+];
+
+
+
+// Physically plausible, hand-built instructional mesh of a Cobalt-like sedan.
+// Not a Chevrolet factory CAD asset. Axes: front is -X, left-hand visible side is +Z.
+class CobaltModel {
+  constructor(scene) {
+    this.root = new THREE.Group(); scene.add(this.root);
+    this.mats = {
+      paint: this.mat(0xe8f0ff,.43,.55), edge:this.mat(0xa8bacf,.30,.78),
+      chrome:this.mat(0xd6e8f7,.15,.87), darkChrome:this.mat(0x606f86,.31,.62),
+      rubber:this.mat(0x0b1019,.93,.02), tread:this.mat(0x1d2530,.91,.01),
+      inner:this.mat(0x141f2b,.83,.04), glass:this.mat(0x7fc5dc,.20,.16,.35),
+      glassDark:this.mat(0x15374c,.25,.18,.61), lamp:this.mat(0xe1f6ff,.15,.15,.9),
+      red:this.mat(0xec4665,.20,.22,.89), amber:this.mat(0xffb75f,.21,.11,.86),
+      seat:this.mat(0x20283c,.91,.03), seatTrim:this.mat(0x475266,.83,.08),
+      motor:this.mat(0x7d8c9c,.63,.53), motorDark:this.mat(0x222d3c,.81,.20),
+      plastic:this.mat(0x111b28,.78,.08), copper:this.mat(0xf6ac5f,.36,.56),
+      coolant:this.mat(0x60cfe9,.37,.14,.59), gold:this.mat(0xe9ad38,.23,.76),
+      under:this.mat(0x172130,.89,.13), silver:this.mat(0x9db2ca,.38,.68),
+    };
+    this.shellMaterials = [this.mats.paint,this.mats.edge,this.mats.glass,this.mats.glassDark];
+    this.owned = new Map();
+    this.groups = {};
+    this.wheels = [];
+    this.animated = { hood:0, trunk:0, doors:0,explode:0,xray:0,engine:0 };
+    this.targets = { hood:0, trunk:0, doors:0,explode:0,xray:0,engine:0 };
+    this.selection = null;
+    this.selectionBox = null;
+    this.halo = null;
+    this.explosive = [
+      ['engine',[-.35,.48,-.55]],['cooling',[-.95,.05,0]],['transmission',[.30,-.22,0]],
+      ['brakes',[0,-.18,.45]],['suspension',[0,-.4,0]],['electric',[-.30,.6,.7]],
+      ['interior',[0,.65,0]],['exhaust',[.2,-.43,-.25]],
+    ];
+    this.build();
+  }
+  mat(color,roughness=.5,metalness=.1,opacity=1) {
+    return new THREE.MeshStandardMaterial({color,roughness,metalness,transparent:opacity<1,opacity,side:THREE.DoubleSide});
+  }
+  group(key,parent=this.root) { const g = new THREE.Group(); g.name = key; parent.add(g); if(parent === this.root) this.groups[key]=g; return g; }
+  place(parent,geo,material,x=0,y=0,z=0,id=null) {
+    const m = new THREE.Mesh(geo,material); m.position.set(x,y,z); m.castShadow = true; m.receiveShadow = true;
+    parent.add(m); if(id) this.tag(m,id); return m;
+  }
+  tag(object,id) { object.userData.partId=id; if(!this.owned.has(id))this.owned.set(id,[]); this.owned.get(id).push(object); return object; }
+  box(parent,w,h,d,mat,x,y,z,id=null) {return this.place(parent,new THREE.BoxGeometry(w,h,d),mat,x,y,z,id);}
+  sphere(parent,r,mat,x,y,z,id=null,sx=1,sy=1,sz=1) {let o=this.place(parent,new THREE.SphereGeometry(r,16,12),mat,x,y,z,id);o.scale.set(sx,sy,sz);return o;}
+  cylinder(parent,r1,r2,h,mat,x,y,z,id=null,axis='y',seg=24){
+    let o=this.place(parent,new THREE.CylinderGeometry(r1,r2,h,seg),mat,x,y,z,id);
+    if(axis==='x')o.rotation.z=Math.PI/2; if(axis==='z')o.rotation.x=Math.PI/2;
+    return o;
+  }
+  pipe(parent,pts,r,mat,id=null) {
+    const curve=new THREE.CatmullRomCurve3(pts.map(q=>new THREE.Vector3(...q)));
+    return this.place(parent,new THREE.TubeGeometry(curve,Math.max(12,pts.length*8),r,7,false),mat,0,0,0,id);
+  }
+  quad(parent,verts,mat,id=null) {
+    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(verts.flat(),3));
+    g.setIndex([0,1,2,0,2,3]);g.computeVertexNormals();return this.place(parent,g,mat,0,0,0,id);
+  }
+  line(parent,pts,color=0x7e9ab2,opacity=.65) {
+    const g=new THREE.BufferGeometry().setFromPoints(pts.map(v=>new THREE.Vector3(...v)));
+    const l=new THREE.Line(g,new THREE.LineBasicMaterial({color,transparent:true,opacity})); parent.add(l);return l;
+  }
+  build() {
+    this.buildUndercarriage();
+    this.buildExterior();
+    this.buildWheels();
+    this.buildPowertrain();
+    this.buildCooling();
+    this.buildElectrical();
+    this.buildTransmission();
+    this.buildBrakesAndSuspension();
+    this.buildInterior();
+    this.buildFuelAndExhaust();
+    this.buildSelectionHalo();
+    this.buildGroundGlow();
+  }
+  buildUndercarriage() {
+    const u=this.group('structure');
+    this.box(u,3.84,.21,1.43,this.mats.under,.08,.60,0,'bodyframe');
+    this.box(u,3.55,.10,1.19,this.mats.darkChrome,.05,.55,0);
+    for(let z of [-.57,.57]){
+      this.box(u,3.38,.14,.11,this.mats.silver,.07,.56,z);
+      this.box(u,3.0,.07,.09,this.mats.darkChrome,.12,.64,z);
+    }
+  }
+  makeSideContour(side) {
+    const s=new THREE.Shape();
+    s.moveTo(-2.21,.38);
+    const arch=(center)=>{ let r=.51; for(let i=0;i<=28;i++){
+      let xx=center-r+2*r*i/28, yy=.41+Math.sqrt(Math.max(0,r*r-(xx-center)**2));s.lineTo(xx,yy);
+    }};
+    s.lineTo(-1.91,.38); arch(-1.40);s.lineTo(.86,.38);arch(1.39);s.lineTo(2.20,.38);
+    s.lineTo(2.24,.91);s.lineTo(1.68,1.24);s.lineTo(-1.66,1.24);s.lineTo(-2.24,.95);s.closePath();
+    const mesh=this.place(this.groups.body,new THREE.ExtrudeGeometry(s,{depth:.038,bevelEnabled:true,bevelSegments:2,steps:1,bevelSize:.013,bevelThickness:.009,curveSegments:6}),this.mats.paint,0,0,side>0?.81:-.849,'bodyframe');
+    return mesh;
+  }
+  buildExterior() {
+    const b=this.group('body');
+    // Main bonnet, front and rear volumes, with exposed center compartment for opening hood.
+    // The center and rear shell is solid; the engine bay at the front stays OPEN.
+    // This matters: opening the hood must reveal real geometry, not an opaque painted slab.
+    this.box(b,2.82,.31,1.48,this.mats.paint,.65,1.05,0,'bodyframe');
+    this.box(b,2.84,.13,1.55,this.mats.paint,.58,1.21,0);
+    this.box(b,1.05,.34,1.50,this.mats.paint,1.68,1.04,0);
+    this.box(b,1.15,.22,1.50,this.mats.paint,-1.65,1.04,0);
+    this.makeSideContour(1);this.makeSideContour(-1);
+    // Belt line, door seams, sill and handles.
+    for(const side of [-1,1]){
+      const z=side*.866;
+      this.line(b,[[-1.96,1.234,z],[2.06,1.234,z]],0xd9e6f0,.65);
+      this.box(b,2.55,.052,.055,this.mats.edge,.13,.46,side*.843);
+      for(let x of [-1.06,.22,1.39])this.line(b,[[x,.90,z+.008*side],[x,1.28,z+.008*side]],0x8493a6,.56);
+      for(let x of [-.54,.83]) {
+        this.box(b,.18,.031,.028,this.mats.chrome,x,1.14,z+side*.017,x<0?'frontdoor':'reardoor');
+        this.box(b,.09,.023,.036,this.mats.darkChrome,x+.027,1.135,z+side*.024);
+      }
+    }
+    // Hood with rear hinges: rotation opens front edge upward.
+    this.hoodPivot = this.group('hoodPivot',b); this.hoodPivot.position.set(-1.10,1.31,0);
+    const hood=this.box(this.hoodPivot,1.18,.054,1.56,this.mats.paint,-.59,.018,0,'hood');
+    hood.geometry.translate(0,0,0);
+    this.line(this.hoodPivot,[[-1.17,.057,-.70],[-.10,.055,-.72]],0xe3efff,.85);
+    this.line(this.hoodPivot,[[-1.17,.057,.70],[-.10,.055,.72]],0xe3efff,.85);
+    // Large bonnet latch / panel treatment.
+    // Dark inner fender liners, open center, and a thin firewall behind the engine.
+    for(const side of [-1,1])this.box(b,1.10,.065,.085,this.mats.inner,-1.65,1.19,side*.64);
+    this.box(b,.06,.35,1.22,this.mats.motorDark,-1.06,1.06,0);
+    // Trunk lid hinges near rear windscreen.
+    this.trunkPivot=this.group('trunkPivot',b); this.trunkPivot.position.set(1.56,1.29,0);
+    this.box(this.trunkPivot,.66,.052,1.47,this.mats.paint,.35,.025,0,'trunk');
+    this.box(this.trunkPivot,.06,.12,1.37,this.mats.edge,.68,-.07,0);
+    this.box(b,.65,.13,1.3,this.mats.inner,1.88,1.19,0);
+    // Cabin silhouette — glass, roof, roof lip and frame.
+    const roof=this.group('roof',b);
+    this.quad(roof,[[-.55,1.80,-.66],[.97,1.81,-.66],[.97,1.81,.66],[-.55,1.80,.66]],this.mats.paint,'bodyframe');
+    this.box(roof,1.60,.071,1.39,this.mats.paint,.20,1.822,0);
+    this.quad(roof,[[-1.15,1.31,-.73],[-.55,1.79,-.66],[-.55,1.79,.66],[-1.15,1.31,.73]],this.mats.glassDark,'windshield');
+    this.quad(roof,[[.97,1.79,-.66],[1.49,1.31,-.72],[1.49,1.31,.72],[.97,1.79,.66]],this.mats.glassDark);
+    for(let side of [-1,1]){
+      let z=side*.745;
+      const gl1=[[-1.09,1.34,z],[-.51,1.756,z],[.13,1.76,z],[.13,1.34,z]];
+      const gl2=[[.24,1.34,z],[.24,1.76,z],[.93,1.76,z],[1.43,1.34,z]];
+      this.quad(roof,gl1,this.mats.glassDark,'frontdoor');
+      this.quad(roof,gl2,this.mats.glassDark,'reardoor');
+      const frame=[[-1.10,1.31,z+.006*side],[-.53,1.80,z+.006*side],[.97,1.80,z+.006*side],[1.47,1.30,z+.006*side]];
+      this.line(roof,frame,0xc4d7e8,.95);
+      this.line(roof,[[.18,1.31,z+.009*side],[.18,1.78,z+.009*side]],0xc4d7e8,.9);
+      this.line(roof,[[-1.08,1.32,z+.009*side],[1.42,1.32,z+.009*side]],0xd2e9fb,.95);
+      // Small mirrors, complete with black holder.
+      this.box(b,.21,.14,.21,this.mats.paint,-1.03,1.36,side*.89,'mirror');
+      this.box(b,.09,.10,.035,this.mats.glass,-1.04,1.38,side*1.005,'mirror');
+    }
+    // Windshield wiper arms.
+    for(let z of [-.37,.37]){
+      this.pipe(b,[[-1.20,1.36,z],[-1.04,1.375,z-.12],[-.96,1.41,z-.22]],.013,this.mats.rubber,'wipers');
+    }
+    // A separate door skin glides outward from visible side when requested.
+    this.doorPivots=[];
+    for(let side of [-1,1]){
+      const dg=this.group('door'+side,b); dg.position.set(-1.09,1.13,side*.886);
+      this.box(dg,1.14,.33,.026,this.mats.paint,.57,-.08,0,'frontdoor');
+      this.quad(dg,[[.05,.24,0],[.61,.65,0],[1.12,.65,0],[1.12,.23,0]],this.mats.glassDark,'frontdoor');
+      this.box(dg,.18,.03,.04,this.mats.chrome,.58,.01,side*.014,'frontdoor');
+      this.line(dg,[[.01,.20,.009],[.59,.68,.009],[1.14,.68,.009]],0xd5e3f1,.85);
+      this.doorPivots.push({pivot:dg,side});
+    }
+    // Front and rear fascia.
+    this.box(b,.13,.50,1.56,this.mats.paint,-2.20,.83,0,'bumper');
+    this.box(b,.09,.43,1.55,this.mats.paint,2.19,.85,0);
+    this.box(b,.075,.28,.99,this.mats.inner,-2.283,1.02,0,'grille');
+    this.box(b,.078,.040,1.02,this.mats.chrome,-2.319,1.175,0,'grille');
+    this.box(b,.08,.038,.98,this.mats.chrome,-2.315,.88,0,'grille');
+    for(let j=0;j<5;j++)this.box(b,.085,.014,.96,this.mats.rubber,-2.328,.923+j*.045,0,'grille');
+    // An abstract gold bowtie shape.
+    this.box(b,.047,.066,.25,this.mats.gold,-2.369,1.109,0);
+    this.box(b,.043,.112,.10,this.mats.gold,-2.374,1.109,0);
+    this.box(b,.042,.080,.27,this.mats.chrome,2.256,1.15,0);
+    this.box(b,.05,.058,.19,this.mats.gold,2.294,1.15,0);
+    this.box(b,.05,.100,.08,this.mats.gold,2.300,1.15,0);
+    for(let side of [-1,1]) {
+      const z=side*.62;
+      this.box(b,.097,.18,.31,this.mats.lamp,-2.266,1.10,z,'headlamp');
+      this.box(b,.108,.035,.18,this.mats.chrome,-2.311,1.17,z,'headlamp');
+      this.box(b,.111,.075,.12,this.mats.amber,-2.310,1.02,side*.72,'headlamp');
+      this.cylinder(b,.080,.080,.036,this.mats.lamp,-2.279,.70,side*.66,'foglamp','x',22);
+      this.box(b,.097,.28,.19,this.mats.red,2.255,1.035,side*.68,'taillight');
+      this.box(b,.100,.059,.19,this.mats.lamp,2.316,1.06,side*.68,'taillight');
+      this.box(b,.091,.045,.19,this.mats.amber,2.315,1.15,side*.68,'taillight');
+    }
+    this.box(b,.042,.13,.48,this.mats.plastic,-2.300,.62,0,'bumper');
+    this.box(b,.040,.11,.47,this.mats.plastic,2.263,.65,0);
+    // Antenna and rear windshield defroster hints.
+    this.cylinder(b,.017,.023,.29,this.mats.rubber,.92,1.98,0,null,'y',10).rotation.z=.25;
+    for(let y=1.42;y<=1.67;y+=.047)this.line(b,[[1.20,y,-.50],[1.20,y,.50]],0xc7e4ef,.19);
+  }
+  buildWheels() {
+    const suspension=this.group('wheelAssembly');
+    for(let x of [-1.40,1.39])for(let side of [-1,1]){
+      const z=side*.795;
+      const g=this.group('wheel',suspension);g.position.set(x,.47,z);this.wheels.push(g);
+      this.place(g,new THREE.TorusGeometry(.34,.116,14,42),this.mats.rubber,0,0,0,'wheel');
+      this.cylinder(g,.266,.266,.088,this.mats.silver,0,0,side*.092,'wheel','z',36);
+      this.cylinder(g,.220,.220,.095,this.mats.darkChrome,0,0,side*.143,'wheel','z',36);
+      for(let i=0;i<10;i++){
+        const angle=i*Math.PI*2/10;
+        let spoke=this.box(g,.035,.17,.022,this.mats.chrome,Math.sin(angle)*.115,Math.cos(angle)*.115,side*.199,'wheel');
+        spoke.rotation.z=-angle;
+      }
+      this.cylinder(g,.062,.062,.027,this.mats.chrome,0,0,side*.217,'wheel','z');
+      for(let n=0;n<38;n++){
+        const a=2*Math.PI*n/38;
+        const c=this.box(g,.029,.028,.060,this.mats.tread,.425*Math.cos(a),.425*Math.sin(a),0,'wheel');
+        c.rotation.z=a;
+      }
+    }
+  }
+  buildPowertrain() {
+    const e=this.group('engine');
+    this.box(e,.69,.35,.73,this.mats.motor,-1.50,.96,-.08,'block');
+    this.box(e,.71,.17,.72,this.mats.silver,-1.50,1.20,-.08,'head');
+    this.box(e,.75,.16,.74,this.mats.motorDark,-1.50,1.36,-.08,'valvecover');
+    this.box(e,.45,.018,.06,this.mats.silver,-1.49,1.451,-.08,'engine');
+    for(let i=0;i<4;i++){
+      let z=-.35+i*.17;
+      this.cylinder(e,.047,.042,.08,this.mats.rubber,-1.50,1.46,z,'coil','y');
+      this.cylinder(e,.024,.024,.105,this.mats.chrome,-1.50,1.40,z,'spark','y');
+      this.cylinder(e,.067,.067,.12,this.mats.silver,-1.55,1.00,z,'pistons','y',15);
+    }
+    this.cylinder(e,.093,.093,.79,this.mats.motorDark,-1.56,.84,-.08,'crank','z');
+    this.box(e,.72,.13,.76,this.mats.motorDark,-1.51,.69,-.08,'oilsump');
+    for(let i=0;i<6;i++){
+      this.box(e,.76,.016,.032,this.mats.chrome,-1.50,.89,-.40+i*.135,'block');
+    }
+    this.cylinder(e,.17,.17,.19,this.mats.rubber,-1.17,1.16,-.12,'timing','x');
+    this.cylinder(e,.095,.095,.21,this.mats.silver,-1.15,1.04,.14,'timing','x');
+    this.box(e,.40,.13,.36,this.mats.plastic,-1.85,1.19,.44,'airfilter');
+    this.box(e,.34,.029,.31,this.mats.darkChrome,-1.85,1.271,.44,'airfilter');
+    this.pipe(e,[[-1.68,1.20,.44],[-1.50,1.26,.46],[-1.21,1.30,.34]],.077,this.mats.motorDark,'intake');
+    this.box(e,.34,.21,.33,this.mats.motor,-1.35,1.22,.30,'intake');
+    this.cylinder(e,.105,.105,.115,this.mats.chrome,-1.19,1.31,.22,'throttle','x');
+    for(let i=0;i<4;i++)this.pipe(e,[[-1.38,1.25,.18+i*.08],[-1.47,1.15,.26+i*.08],[-1.58,1.11,.30+i*.08]],.028,this.mats.motor,'intake');
+    this.pipe(e,[[-1.28,1.32,.25],[-1.42,1.26,.29],[-1.56,1.28,.29]],.029,this.mats.copper,'injector');
+    for(let z of [-.35,-.18,0,.17])this.cylinder(e,.024,.024,.09,this.mats.gold,-1.45,1.26,z,'injector');
+    this.cylinder(e,.083,.083,.18,this.mats.chrome,-1.76,.90,.39,'oilfilter','z',18);
+  }
+  buildCooling() {
+    const c=this.group('cooling');
+    this.box(c,.09,.58,1.07,this.mats.motorDark,-2.055,1.05,0,'radiator');
+    for(let i=0;i<18;i++)this.box(c,.013,.54,.014,this.mats.silver,-2.114,1.05,-.49+i*.057,'radiator');
+    this.cylinder(c,.258,.258,.04,this.mats.darkChrome,-1.961,1.00,0,'fan','x');
+    for(let i=0;i<7;i++){
+      let a=i*Math.PI*2/7;
+      const v=this.box(c,.018,.17,.09,this.mats.silver,-1.935,1+.12*Math.sin(a),.12*Math.cos(a),'fan');v.rotation.x=a;
+    }
+    this.box(c,.24,.26,.26,this.mats.coolant,-1.86,1.25,-.57,'coolant');
+    this.cylinder(c,.075,.075,.035,this.mats.rubber,-1.86,1.394,-.57,'coolant');
+    this.pipe(c,[[-1.97,1.26,.35],[-1.77,1.37,.34],[-1.60,1.18,.33]],.035,this.mats.rubber,'thermostat');
+    this.cylinder(c,.093,.093,.12,this.mats.silver,-1.56,1.04,.42,'pump','z');
+    this.pipe(c,[[-1.55,1.01,.42],[-1.69,.98,.41],[-1.95,1.03,.46]],.038,this.mats.rubber,'pump');
+  }
+  buildElectrical() {
+    const e=this.group('electric');
+    this.box(e,.30,.25,.29,this.mats.plastic,-1.82,1.18,-.47,'battery');
+    this.box(e,.27,.035,.27,this.mats.darkChrome,-1.82,1.32,-.47,'battery');
+    for(let z of [-.57,-.37])this.cylinder(e,.025,.025,.035,this.mats.gold,-1.83,1.36,z,'battery');
+    this.cylinder(e,.129,.12,.18,this.mats.silver,-1.68,1.03,.45,'alternator','z');
+    for(let i=0;i<10;i++){
+      let a=Math.PI*2*i/10;this.box(e,.014,.082,.009,this.mats.motorDark,-1.68+.10*Math.cos(a),1.03+.10*Math.sin(a),.556,'alternator').rotation.z=a;
+    }
+    this.cylinder(e,.11,.10,.29,this.mats.motorDark,-1.11,.92,-.33,'starter','x');
+    this.box(e,.24,.18,.23,this.mats.plastic,-1.20,1.23,-.53,'fusebox');
+    this.box(e,.17,.12,.16,this.mats.motorDark,-1.11,1.24,.44,'ecu');
+    this.box(e,.21,.12,.15,this.mats.chrome,-1.13,1.20,-.39,'abs');
+    for(let i=0;i<4;i++)this.pipe(e,[[-1.14,1.18,-.39+i*.03],[-.98,1.10,-.30+i*.04],[-.76,.96,-.32+i*.03]],.010,this.mats.copper,'abs');
+  }
+  buildTransmission() {
+    const t=this.group('transmission');
+    this.box(t,.57,.38,.55,this.mats.motor,-.91,.91,.02,'gearbox');
+    this.cylinder(t,.19,.19,.15,this.mats.silver,-1.18,.93,.05,'converter','x');
+    for(let i=0;i<5;i++)this.box(t,.03,.37,.54,this.mats.darkChrome,-1.14+i*.11,.92,.02,'gearbox');
+    this.cylinder(t,.16,.13,.40,this.mats.motorDark,-.75,.84,.02,'differential','z');
+    for(let side of [-1,1]){
+      this.cylinder(t,.045,.045,.65,this.mats.chrome,-1.32,.62,side*.45,'axle','z',16);
+      this.sphere(t,.089,this.mats.rubber,-1.38,.62,side*.75,'axle');
+      this.sphere(t,.079,this.mats.rubber,-1.26,.62,side*.23,'axle');
+    }
+    this.box(t,.22,.11,.15,this.mats.motorDark,-.13,1.08,.04,'selector');
+    this.cylinder(t,.025,.025,.21,this.mats.chrome,-.13,1.19,.04,'selector');
+    this.sphere(t,.065,this.mats.seat,-.13,1.33,.04,'selector');
+  }
+  buildBrakesAndSuspension() {
+    const br=this.group('brakes'), su=this.group('suspension');
+    for(let side of [-1,1]){
+      this.cylinder(br,.235,.235,.057,this.mats.chrome,-1.39,.47,side*.818,'frontdisc','z');
+      this.box(br,.19,.13,.09,this.mats.red,-1.23,.49,side*.88,'caliper');
+      this.cylinder(br,.215,.215,.065,this.mats.motorDark,1.39,.47,side*.817,'reardrum','z');
+      // Front MacPherson strut with coil winding.
+      this.cylinder(su,.05,.053,.44,this.mats.darkChrome,-1.38,.91,side*.65,'strut');
+      this.cylinder(su,.083,.083,.065,this.mats.motorDark,-1.38,1.15,side*.65,'strut');
+      let pts=[]; for(let i=0;i<100;i++){
+        const a=i/99*Math.PI*9;pts.push([-1.38+.09*Math.cos(a),.69+i/99*.34,side*.65+.09*Math.sin(a)]);
+      }this.pipe(su,pts,.014,this.mats.copper,'spring');
+      this.pipe(su,[[-1.10,.55,side*.47],[-1.34,.45,side*.64],[-1.40,.47,side*.80]],.043,this.mats.silver,'arm');
+      this.pipe(su,[[-1.08,.70,side*.25],[-1.19,.58,side*.50],[-1.39,.56,side*.83]],.026,this.mats.silver,'tie');
+      this.cylinder(su,.042,.045,.35,this.mats.darkChrome,1.40,.77,side*.64,'rearbeam');
+    }
+    this.box(su,.14,.10,1.27,this.mats.motor,1.39,.54,0,'rearbeam');
+    this.box(su,.50,.13,.19,this.mats.motorDark,-1.02,.73,.17,'steering');
+    this.pipe(su,[[-.93,.77,.20],[-1.17,.73,.41],[-1.36,.60,.70]],.033,this.mats.silver,'steering');
+    this.box(br,.22,.13,.13,this.mats.silver,-1.10,1.24,-.32,'mastercyl');
+    this.box(br,.16,.11,.14,this.mats.coolant,-1.10,1.36,-.32,'mastercyl');
+    this.pipe(br,[[-1.09,1.18,-.32],[-.80,.80,-.37],[-.30,.66,-.59],[-1.20,.52,-.78]],.012,this.mats.copper,'brakehose');
+    this.pipe(br,[[-1.09,1.18,-.32],[-.80,.80,-.36],[.75,.65,-.66],[1.39,.49,-.78]],.012,this.mats.copper,'brakehose');
+  }
+  buildInterior() {
+    const i=this.group('interior');
+    // Brownish/charcoal interior visible through translucent side windows.
+    this.box(i,2.38,.08,1.38,this.mats.seat,-.01,.73,0);
+    this.box(i,.25,.20,1.34,this.mats.motorDark,-.82,1.21,0,'dash');
+    this.box(i,.22,.075,.42,this.mats.plastic,-.78,1.37,0,'dash');
+    this.box(i,.035,.17,.23,this.mats.glassDark,-.893,1.38,.03,'screen');
+    for(let z of [-.43,.43]){
+      const seat=this.group('seat'+z,i);
+      this.box(seat,.47,.11,.44,this.mats.seat,-.10,.91,z,'seats');
+      const back=this.box(seat,.13,.57,.45,this.mats.seat,.13,1.19,z,'seats');back.rotation.z=-.08;
+      this.box(seat,.08,.14,.27,this.mats.seatTrim,.16,1.53,z,'seats');
+      this.line(seat,[[.05,.95,z-.15],[.05,1.44,z-.15]],0x5e6c80,.49);
+    }
+    this.box(i,.45,.12,1.31,this.mats.seat,1.03,.90,0,'rearseat');
+    this.box(i,.13,.49,1.30,this.mats.seat,1.27,1.18,0,'rearseat');
+    for(let z of [-.43,0,.43])this.box(i,.09,.13,.24,this.mats.seatTrim,1.28,1.49,z,'rearseat');
+    this.cylinder(i,.24,.24,.03,this.mats.motorDark,-.49,1.42,.44,'steerwheel','x');
+    const ring=this.place(i,new THREE.TorusGeometry(.19,.032,9,35),this.mats.seat,-.445,1.42,.44,'steerwheel');ring.rotation.y=Math.PI/2;ring.rotation.z=.04;
+    this.cylinder(i,.062,.062,.05,this.mats.silver,-.43,1.42,.44,'airbag','x');
+    for(let a=0;a<3;a++){
+      const phi=a*Math.PI*2/3;this.pipe(i,[[-.417,1.42,.44],[-.417,1.42+.14*Math.cos(phi),.44+.14*Math.sin(phi)]],.018,this.mats.silver,'steerwheel');
+    }
+    this.pipe(i,[[.02,1.46,.69],[.06,1.20,.62],[.15,.97,.49]],.017,this.mats.red,'belt');
+    this.pipe(i,[[.02,1.46,-.69],[.06,1.20,-.62],[.15,.97,-.49]],.017,this.mats.red,'belt');
+    this.box(i,.49,.11,.23,this.mats.motorDark,-.14,.86,0);
+    this.box(i,.15,.16,.17,this.mats.plastic,-.29,1.11,0);
+  }
+  buildFuelAndExhaust() {
+    const ex=this.group('exhaust');
+    this.box(ex,.83,.23,.70,this.mats.motorDark,1.24,.47,-.06,'fuel');
+    this.cylinder(ex,.10,.10,.065,this.mats.chrome,1.20,.62,-.06,'fuelpump');
+    this.cylinder(ex,.11,.11,.28,this.mats.silver,-.73,.47,-.18,'catalyst','x');
+    this.pipe(ex,[[-1.09,.59,-.16],[-.76,.46,-.18],[-.35,.42,-.18],[.45,.39,-.18],[1.57,.39,-.18],[2.14,.40,-.20]],.036,this.mats.darkChrome,'exhaustpipe');
+    this.cylinder(ex,.14,.14,.56,this.mats.motor,1.75,.42,-.20,'muffler','x');
+    this.cylinder(ex,.055,.055,.25,this.mats.chrome,2.12,.40,-.20,'exhaustpipe','x');
+  }
+  buildSelectionHalo() {
+    const h=this.group('selector');
+    const ring=this.place(h,new THREE.TorusGeometry(.20,.014,7,48),new THREE.MeshBasicMaterial({color:0x55deff,transparent:true,opacity:.9}));
+    ring.rotation.x=Math.PI/2;
+    const ring2=this.place(h,new THREE.TorusGeometry(.13,.012,7,48),new THREE.MeshBasicMaterial({color:0xffcb7a,transparent:true,opacity:.65}));
+    ring2.rotation.y=Math.PI/2;
+    this.halo=h;this.halo.visible=false;
+  }
+  buildGroundGlow() {
+    const g=this.group('groundglow');
+    let sh=this.place(g,new THREE.PlaneGeometry(5.8,3.0),new THREE.MeshBasicMaterial({color:0x173f55,transparent:true,opacity:.09,depthWrite:false}),0,.008,0);
+    sh.rotation.x=-Math.PI/2;
+  }
+  setPaint(hex){this.mats.paint.color.set(hex);}
+  setTarget(name,value){if(name in this.targets)this.targets[name]=value?1:0;}
+  toggle(name){if(name in this.targets){this.targets[name]=1-this.targets[name];return Boolean(this.targets[name]);}return false;}
+  select(id){
+    this.selection=id;this.halo.visible=!!id;
+    if(this.selectionBox){this.root.remove(this.selectionBox);this.selectionBox.geometry.dispose();this.selectionBox.material.dispose();this.selectionBox=null;}
+    const p=PARTS.find(q=>q.id===id);
+    if(p)this.halo.position.set(...p.position);
+    const actual=this.owned.get(id);
+    if(actual?.length){
+      this.root.updateMatrixWorld(true);
+      this.selectionBox=new THREE.BoxHelper(actual[0],0x78f0ff);
+      this.selectionBox.material.transparent=true;this.selectionBox.material.opacity=.55;
+      this.root.add(this.selectionBox);
+    }
+  }
+  hitPart(intersect){ let obj=intersect.object;while(obj){if(obj.userData.partId)return obj.userData.partId;obj=obj.parent;}return null; }
+  getRaycastObjects() { return [this.root]; }
+  getPartPoint(id) { const p=PARTS.find(q=>q.id===id);return p?new THREE.Vector3(...p.position):new THREE.Vector3(); }
+  update(dt,time){
+    const damp=Math.min(1,dt*3.6);
+    for(const key of Object.keys(this.targets)) this.animated[key]+=(this.targets[key]-this.animated[key])*damp;
+    this.hoodPivot.rotation.z=-1.18*this.animated.hood;
+    this.trunkPivot.rotation.z=.94*this.animated.trunk;
+    for(const d of this.doorPivots)d.pivot.rotation.y=-d.side*1.13*this.animated.doors;
+    for(const [key,arr] of this.explosive){let g=this.groups[key];if(g)g.position.set(...arr.map(v=>v*this.animated.explode));}
+    // Transparency of body is reduced when X-ray or parts explosion is enabled.
+    const x=Math.max(this.animated.xray,this.animated.explode*.84);
+    this.mats.paint.transparent=x>.02;this.mats.paint.opacity=1-.80*x;
+    this.mats.edge.transparent=x>.02;this.mats.edge.opacity=1-.64*x;
+    this.mats.glassDark.opacity=.61-.49*x;
+    this.mats.glass.opacity=.35-.25*x;
+    this.mats.paint.depthWrite=x<.5;
+    this.mats.edge.depthWrite=x<.5;
+    // Demonstrative rotation; not a physics simulation.
+    if(this.animated.engine>.04){for(let w of this.wheels)w.rotation.z+=dt*1.7*this.animated.engine;}
+    if(this.selectionBox){this.selectionBox.update();this.selectionBox.material.opacity=.38+.22*(1+Math.sin(time*2.6))*.5;}
+    if(this.halo.visible){this.halo.rotation.y=time*.75;this.halo.rotation.z=Math.sin(time*2)*.15;
+      let s=1+Math.sin(time*3)*.16;this.halo.scale.setScalar(s);}
+  }
+}
+
+
+
+const $ = id => document.getElementById(id);
+const root = $('canvas3d');
+const categoryList = $('categoryList');
+const partsList = $('partsList');
+const search = $('searchInput');
+const hotspots = $('hotspotLayer');
+let category = 'all';
+let selected = 'engine';
+let renderer, scene, camera, controls, car, orbitActive = false;
+let toastTimer = 0;
+let activeView = 'iso';
+let targetCamera = null;
+let frames = 0, lastFrame = 0, fpsTick = 0;
+
+function toast(message) {
+  let el = $('toast'); el.textContent=message;el.classList.add('visible');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('visible'),2500);
+}
+function init3D(){
+  renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  renderer.setSize(root.clientWidth,root.clientHeight);
+  renderer.outputColorSpace=THREE.SRGBColorSpace;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=1.35;
+  renderer.shadowMap.enabled=true;
+  renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  root.appendChild(renderer.domElement);
+  renderer.domElement.setAttribute('aria-label','Chevrolet Cobalt интерактивті 3D көрінісі');
+  renderer.domElement.setAttribute('tabindex','0');
+  scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0x0a1e2d,.023);
+  camera=new THREE.PerspectiveCamera(39,root.clientWidth/root.clientHeight,.08,150);
+  camera.position.set(-6.25,3.45,6.4);
+  controls=new OrbitControls(camera,renderer.domElement);
+  controls.enableDamping=true;controls.dampingFactor=.075;
+  controls.target.set(0,1.02,0);
+  controls.minDistance=1.25;controls.maxDistance=17;
+  controls.maxPolarAngle=Math.PI*.89;
+  controls.enablePan=true;controls.screenSpacePanning=true;
+  controls.addEventListener('start',()=>{orbitActive=true;targetCamera=null;});
+  controls.addEventListener('end',()=>{orbitActive=false;});
+  scene.add(new THREE.HemisphereLight(0x8cdaf9,0x142334,2.5));
+  const key=new THREE.DirectionalLight(0xddeffe,3.8);key.position.set(-3,8,5);key.castShadow=true;
+  key.shadow.mapSize.set(2048,2048);key.shadow.camera.left=-7;key.shadow.camera.right=7;
+  key.shadow.camera.top=7;key.shadow.camera.bottom=-7;key.shadow.normalBias=.035;scene.add(key);
+  const blue=new THREE.PointLight(0x36b8ff,55,18);blue.position.set(2,4,-5);scene.add(blue);
+  const gold=new THREE.PointLight(0xffa858,30,12);gold.position.set(-4,2.8,3);scene.add(gold);
+  // Studio floor plus concentric high-tech turntable rings.
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({color:0x071522,metalness:.31,roughness:.72}));
+  ground.rotation.x=-Math.PI/2;ground.position.y=-.035;ground.receiveShadow=true;scene.add(ground);
+  const concentric=[2.55,2.94,3.46];concentric.forEach((r,idx)=>{
+    const ring=new THREE.Mesh(new THREE.RingGeometry(r,r+.012,120),new THREE.MeshBasicMaterial({color:idx===0?0x3ec7de:0x355974,transparent:true,opacity:idx===0?.58:.20,side:THREE.DoubleSide}));
+    ring.rotation.x=-Math.PI/2;ring.position.y=-.017+idx*.001;scene.add(ring);
+  });
+  const grid=new THREE.GridHelper(35,45,0x203c4d,0x173448);grid.position.y=-.020;
+  grid.material.opacity=.17;grid.material.transparent=true;scene.add(grid);
+  for(let j=0;j<48;j++){
+    let angle=j*Math.PI*2/48;
+    let radial=3.11+(j%4)*.065;
+    const tick=new THREE.Mesh(new THREE.BoxGeometry(j%4===0?.105:.04,.004,.013),new THREE.MeshBasicMaterial({color:0x68dfff,transparent:true,opacity:j%4===0?.62:.18}));
+    tick.position.set(Math.sin(angle)*radial,-.014,Math.cos(angle)*radial);
+    tick.rotation.y=angle;scene.add(tick);
+  }
+  car=new CobaltModel(scene);
+  const raycaster=new THREE.Raycaster(), pointer=new THREE.Vector2();
+  let pointerDown={x:0,y:0};
+  renderer.domElement.addEventListener('pointerdown',e=>{pointerDown={x:e.clientX,y:e.clientY};});
+  renderer.domElement.addEventListener('pointerup',e=>{
+    if(Math.hypot(e.clientX-pointerDown.x,e.clientY-pointerDown.y)>7)return;
+    const box=renderer.domElement.getBoundingClientRect();
+    pointer.x=(e.clientX-box.left)/box.width*2-1;
+    pointer.y=-(e.clientY-box.top)/box.height*2+1;
+    raycaster.setFromCamera(pointer,camera);
+    const hits=raycaster.intersectObjects(car.getRaycastObjects(),true);
+    for(let hit of hits){const id=car.hitPart(hit);if(id&&PART_BY_ID[id]){choosePart(id,{focus:false});return;}}
+  });
+  window.addEventListener('resize',resize);
+  resize();
+  lastFrame=performance.now();requestAnimationFrame(animate);
+}
+function resize(){
+  if(!renderer||!root.clientWidth||!root.clientHeight)return;
+  camera.aspect=root.clientWidth/root.clientHeight;camera.updateProjectionMatrix();
+  renderer.setSize(root.clientWidth,root.clientHeight,false);
+}
+function animate(now){
+  requestAnimationFrame(animate);
+  let dt=Math.min((now-lastFrame)/1000,.05);lastFrame=now;
+  controls.update();
+  if(targetCamera){
+    camera.position.lerp(targetCamera.position,Math.min(1,dt*2.6));
+    controls.target.lerp(targetCamera.target,Math.min(1,dt*2.6));
+    if(camera.position.distanceTo(targetCamera.position)<.04&&controls.target.distanceTo(targetCamera.target)<.03)targetCamera=null;
+  }
+  car.update(dt,now/1000);
+  renderHotspotPositions();
+  renderer.render(scene,camera);
+  frames++;if(now-fpsTick>=1100){$('fpsLabel').textContent=Math.round(frames*1000/(now-fpsTick))+' FPS';fpsTick=now;frames=0;}
+}
+function goTo(position,target,distance=null){
+  const next=new THREE.Vector3(...position),look=new THREE.Vector3(...target);
+  if(distance){const dir=next.clone().sub(look).normalize();next.copy(look).addScaledVector(dir,distance);}
+  targetCamera={position:next,target:look};
+}
+const views={
+  iso:{camera:[-6.25,3.45,6.4],target:[0,1.02,0]},
+  front:{camera:[-6.5,1.55,0],target:[0,1.00,0]},
+  side:{camera:[0,2.06,7.2],target:[0,1.00,0]},
+  top:{camera:[-.05,8,.05],target:[0,1.00,0]},
+  inside:{camera:[-.48,2.04,2.25],target:[-.10,1.19,.05]},
+};
+function setView(view){
+  if(!views[view])return;
+  activeView=view;
+  document.querySelectorAll('.view-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+  goTo(views[view].camera,views[view].target);
+  if(view==='inside')setMode('xray',true);
+}
+function focusSelected(){
+  const p=PART_BY_ID[selected];if(!p)return;
+  const point=new THREE.Vector3(...p.position);
+  const isInside=['interior','transmission','exhaust','suspension','brakes'].includes(p.category);
+  const distance=isInside?2.5:2.9;
+  const offset=new THREE.Vector3(p.position[0]<-1.2?-1.5:1.65,1.25,2.4).normalize().multiplyScalar(distance);
+  goTo(point.clone().add(offset).toArray(),point.toArray());
+  if(p.category==='engine'||p.category==='cooling'||p.category==='electric')setMode('hood',true);
+  if(isInside)setMode('xray',true);
+  toast('3D камера: '+p.name);
+}
+function setMode(name,value){
+  car.setTarget(name,value);
+  const el=$(name==='hood'?'hoodBtn':name==='doors'?'doorBtn':name==='trunk'?'trunkBtn':name==='xray'?'xrayBtn':name==='explode'?'explodeBtn':'motionBtn');
+  if(el)el.classList.toggle('active',Boolean(value));
+}
+function toggleMode(name,label){const value=car.toggle(name);setMode(name,value);toast(label+(value?' — қосылды':' — өшірілді'));}
+function resetEverything(){
+  for(let x of ['hood','doors','trunk','xray','explode','engine'])setMode(x,false);
+  setView('iso');toast('Бастапқы көрініс қалпына келді');
+}
+function choosePart(id,{focus=false,ensureCategory=false}={}){
+  if(!PART_BY_ID[id])return;
+  selected=id;
+  const p=PART_BY_ID[id];
+  if(ensureCategory && category!=='all'&&category!==p.category){category=p.category;drawCategories();drawParts();}
+  car.select(id);
+  drawDetails(p);
+  document.querySelectorAll('.part-row').forEach(el=>el.classList.toggle('selected',el.dataset.id===id));
+  if(focus)focusSelected();
+  if(!focus && ['engine','cooling'].includes(p.category) && !car.targets.hood)setMode('hood',true);
+  drawHotspots();
+}
+function drawDetails(p){
+  const c=CAT_BY_ID[p.category];
+  $('detailCat').textContent=c.name.toUpperCase();$('detailCat').style.color=c.color;
+  $('detailTitle').textContent=p.name;
+  $('detailIdentifier').textContent='ID: '+p.id.toUpperCase()+'  •  COBALT / '+p.category.toUpperCase();
+  $('detailIndex').textContent=String(PARTS.indexOf(p)+1).padStart(2,'0')+' / '+PARTS.length;
+  $('detailDescription').textContent=p.description;
+  $('detailSigns').textContent=p.signs;
+  $('detailCheck').textContent=p.check;
+  $('detailSymbol').textContent=c.icon;
+  $('detailSymbol').style.color=c.color;
+}
+function drawCategories(){
+  categoryList.replaceChildren();
+  for(const c of CATEGORIES){
+    const n=PARTS.filter(p=>c.id==='all'||p.category===c.id).length;
+    const b=document.createElement('button');b.type='button';b.className='category'+(c.id===category?' active':'');
+    b.innerHTML='<span class="cat-icon" style="color:'+c.color+'">'+c.icon+'</span><span>'+c.name+'</span><span class="count">'+n+'</span>';
+    b.addEventListener('click',()=>{
+      category=c.id;search.value='';drawCategories();drawParts();drawHotspots();
+      if(c.id==='engine'||c.id==='cooling'||c.id==='electric')setMode('hood',true);
+      if(c.id==='interior')setMode('xray',true);
+      toast(c.name+' — '+n+' компонент');
+    });categoryList.appendChild(b);
+  }
+}
+function visibleParts(){
+  const q=search.value.trim().toLocaleLowerCase('kk');
+  return PARTS.filter(p=>(category==='all'||p.category===category)&&(!q||[p.name,p.description,p.id].join(' ').toLocaleLowerCase('kk').includes(q)));
+}
+function drawParts(){
+  const items=visibleParts();
+  $('partsCount').textContent=items.length;
+  $('partsTitle').textContent=category==='all'?'БАРЛЫҚ БӨЛШЕК':CAT_BY_ID[category].name.toUpperCase();
+  partsList.replaceChildren();
+  if(items.length===0){partsList.innerHTML='<div class="empty-list">Сұраныс бойынша бөлшек табылмады.</div>';return;}
+  for(const p of items){
+    const b=document.createElement('button');b.type='button';b.className='part-row'+(selected===p.id?' selected':'');b.dataset.id=p.id;
+    const dot=document.createElement('span');dot.className='part-dot';
+    const name=document.createElement('span');name.className='part-name';name.textContent=p.name;
+    const arrow=document.createElement('span');arrow.className='part-arrow';arrow.textContent='›';
+    b.append(dot,name,arrow);b.addEventListener('click',()=>choosePart(p.id,{focus:true}));
+    partsList.appendChild(b);
+  }
+}
+const HOTSPOT_MAIN=['engine','headlamp','frontdoor','wheel','taillight','trunk','radiator','dash'];
+let hotspotElements=[];
+function drawHotspots(){
+  hotspots.replaceChildren();hotspotElements=[];
+  const candidates=(category==='all'&&search.value.trim()===''?HOTSPOT_MAIN:visibleParts().map(p=>p.id));
+  const ids=[...new Set([selected,...candidates])].filter(id=>PART_BY_ID[id]).slice(0,category==='all'?9:10);
+  for(const id of ids){
+    const part=PART_BY_ID[id];
+    const el=document.createElement('button');el.type='button';el.className='hotspot'+(selected===id?' active':'');
+    const icon=document.createElement('i');const name=document.createElement('span');name.textContent=part.name;
+    el.append(icon,name);el.addEventListener('click',()=>choosePart(id,{focus:true,ensureCategory:true}));
+    hotspots.appendChild(el);hotspotElements.push({el,point:new THREE.Vector3(...part.position)});
+  }
+}
+function renderHotspotPositions(){
+  if(!camera)return;
+  const w=root.clientWidth,h=root.clientHeight;
+  for(const item of hotspotElements){
+    const p=item.point.clone().project(camera);
+    const x=(p.x*.5+.5)*w,y=(-p.y*.5+.5)*h;
+    const visible=p.z>-1 && p.z<1 && x>25 && x<w-25 && y>123 && y<h-165;
+    item.el.style.display=visible?'flex':'none';
+    if(visible){item.el.style.left=x+'px';item.el.style.top=y+'px';}
+  }
+}
+function attachEvents(){
+  $('hoodBtn').addEventListener('click',()=>toggleMode('hood','Капот'));
+  $('doorBtn').addEventListener('click',()=>toggleMode('doors','Есіктер'));
+  $('trunkBtn').addEventListener('click',()=>toggleMode('trunk','Жүксалғыш'));
+  $('xrayBtn').addEventListener('click',()=>toggleMode('xray','Рентген көрінісі'));
+  $('explodeBtn').addEventListener('click',()=>toggleMode('explode','Жүйелерді бөлу'));
+  $('motionBtn').addEventListener('click',()=>toggleMode('engine','Демонстрациялық доңғалақ айналуы'));
+  $('resetBtn').addEventListener('click',resetEverything);
+  $('focusBtn').addEventListener('click',focusSelected);
+  search.addEventListener('input',()=>{drawParts();drawHotspots();});
+  document.querySelectorAll('.view-btn').forEach(btn=>btn.addEventListener('click',()=>setView(btn.dataset.view)));
+  document.querySelectorAll('.paint-swatch').forEach(btn=>btn.addEventListener('click',()=>{
+    car.setPaint(btn.dataset.color);
+    document.querySelectorAll('.paint-swatch').forEach(b=>b.classList.toggle('selected',b===btn));
+    toast('Кузов түсі өзгертілді');
+  }));
+  const help=$('helpDialog');
+  const closeHelp=()=>help.classList.add('hidden');
+  $('shortcutBtn').addEventListener('click',()=>help.classList.remove('hidden'));
+  $('helpClose').addEventListener('click',closeHelp);
+  help.addEventListener('click',e=>{if(e.target===help)closeHelp();});
+  window.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){closeHelp();search.blur();return;}
+    if(document.activeElement?.matches('input,textarea,[contenteditable]'))return;
+    const k=e.key.toLowerCase();
+    if(k==='/'){e.preventDefault();search.focus();return;}
+    if(k==='h')toggleMode('hood','Капот');
+    if(k==='d')toggleMode('doors','Есіктер');
+    if(k==='t')toggleMode('trunk','Жүксалғыш');
+    if(k==='x')toggleMode('xray','Рентген көрінісі');
+    if(k==='e')toggleMode('explode','Бөлшектеу');
+    if(k==='r')resetEverything();
+  });
+}
+function start(){
+  $('specGrid').innerHTML=SPECIFICATIONS.map(([label,val])=>'<div class="spec-cell"><span>'+label+'</span><b>'+val+'</b></div>').join('');
+  drawCategories();drawParts();
+  try{
+    init3D();
+    choosePart('engine');
+    drawHotspots();
+    attachEvents();
+    setTimeout(()=>$('loading').classList.add('done'),650);
+    toast('COBALT 3D LAB — дайын. Бөлшекті таңдаңыз!');
+  }catch(error){
+    console.error('3D initialization error',error);
+    $('loading').innerHTML='<div class="loading-core" style="max-width:350px;text-align:center"><h2>3D көрінісі ашылмады</h2><p>Браузерде WebGL қосылғанын және интернет қосылымын тексеріңіз. VS Code Live Server арқылы ашыңыз.</p><pre style="white-space:pre-wrap;font-size:11px;color:#e8a5a5">'+String(error.message).replace(/</g,'&lt;')+'</pre></div>';
+  }
+}
+start();
+
+</script>
+</body>
+</html>
